@@ -9,6 +9,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+
 
 
 @Entity
@@ -20,10 +25,13 @@ public class Producto {
 	private long id;
 	private String nombre;
 	private String descripcion;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate fechaEntrada;
 	private Double precio;
 	
-	@OneToMany
+	@EqualsAndHashCode.Exclude
+	@ToString.Exclude
+	@OneToMany(mappedBy = "producto")
 	private List<LineaPresupuesto> lineasPresupuesto;
 
 	/**
@@ -191,6 +199,14 @@ public class Producto {
 		return true;
 	}
 	
+	public void addLineaPresupuesto(LineaPresupuesto lp) {
+		this.lineasPresupuesto.add(lp);
+		lp.setProducto(this);
+	}
 	
+	public void removeLineaPresupuesto(LineaPresupuesto lp) {
+		this.lineasPresupuesto.remove(lp);
+		lp.setProducto(null);
+	}
 	
 }

@@ -30,19 +30,21 @@ public class ControllerCliente {
 	
 	
 	//METODO RELLENAR FORMULARIO DE REGISTRO
-	@GetMapping("/nuevoCliente")
+	@GetMapping("nuevoCliente")
 	public String mostrarFormularioRegistroCliente(Model model) {
 		model.addAttribute("cliente", new Cliente());
 		return "html/plantillaFormularioRegistroCliente";
 		
 	}
+	//ESTE SE MODIFICARA PARA QUE ENTRE EN EL PANEL DE CONTROL
 	//METODO ENVIAR RESPUESTA FORMULARIO DE REGISTRO
-	@PostMapping("/nuevoCliente/submit")
+	@PostMapping("nuevoCliente/submit")
 	public String procesarFormularioRegistroCliente(@ModelAttribute("cliente") Cliente C) {
 		clienteServicio.add(C);
 		return "html/plantillaPanelControlCliente";
 		
 	}
+	//ESTO ENVIARA AL LISTADO
 	//METODO ENVIAR RESPUESTA FORMULARIO DE REGISTRO DE CLIENTE(ADMIN)
 	@PostMapping("admin/nuevoCliente/submit")
 	public String procesarFormularioRegistroClienteAdmin(@ModelAttribute("cliente") Cliente C) {
@@ -51,7 +53,7 @@ public class ControllerCliente {
 	}
 	
 	//METODO RELLENAR FORMULARIO INICIO DE SESION
-	@GetMapping("/inicio")
+	@GetMapping("inicio")
 	public String mostrarFormularioInicioSesion(Model model) {
 		
 		return "plantillaInicioSesion";
@@ -69,7 +71,7 @@ public class ControllerCliente {
 		}
 	
 	//METODO EDITAR PERFIL
-	@GetMapping("/editarPerfil/{id}")
+	@GetMapping("editarPerfil/{id}")
 	public String editarPerfil(@PathVariable("id") long id,Model model) {
 		Cliente cEditar = clienteServicio.findById(id);
 		

@@ -36,6 +36,14 @@ public class ControllerProducto {
 				return "html/plantillaListadoProducto";
 			}
 			
+//			@GetMapping("/")
+//			public String index() {
+//				
+//				return "html/Index";
+//				
+//			}
+			
+			
 			//METODO LISTAR TODOS LOS PRODUCTOS CLIENTE
 			@GetMapping("/listadoProductoCliente")
 			public String mostrarTodosProductosCliente(Model model) {
@@ -52,10 +60,10 @@ public class ControllerProducto {
 
 			
 			// METODO RESPUESTA FORMULARIO REGISTRO_DE_PRODUCTO ADMIN
-			@PostMapping("nuevo/producto/submmit")
+			@PostMapping("nuevo/producto/submit")
 			public String procesarFormularioRegistroProducto(@ModelAttribute("producto") Producto p) {
 				productoServicio.add(p);
-				return "html/plantillaListadoProducto";
+				return "html/pruebaAgregarProducto";
 			}
 			
 			// METODO LISTAR PRODUCTOS POR NOMBRE

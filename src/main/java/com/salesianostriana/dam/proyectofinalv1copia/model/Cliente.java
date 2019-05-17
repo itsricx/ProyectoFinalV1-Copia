@@ -6,6 +6,9 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+
 
 
 /**
@@ -22,7 +25,9 @@ public class Cliente extends Usuario{
 	private Integer edad;
 	private Character sexo;
 	
-	@OneToMany
+	@EqualsAndHashCode.Exclude
+	@ToString.Exclude
+	@OneToMany(mappedBy = "cliente")
 	private List<Presupuesto> listaPresupuestos;
 
 	/**
@@ -132,6 +137,18 @@ public class Cliente extends Usuario{
 		return true;
 	}
 	
+	//Metodo helper
+	public void addPresupuesto(Presupuesto p) {
+		this.listaPresupuestos.add(p);
+		p.setCliente(this);
+		
+	}
+	//Metodo helper
+	public void removePresupuesto(Presupuesto p) {
+		this.listaPresupuestos.remove(p);
+		p.setCliente(null);
+		
+	}
 	
 
 	

@@ -9,6 +9,9 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+
 
 
 @Entity
@@ -21,7 +24,9 @@ public class Presupuesto {
 	private Double total;
 	private Integer IVA;
 	
-	@OneToMany
+	@EqualsAndHashCode.Exclude
+	@ToString.Exclude
+	@OneToMany(mappedBy = "presupuesto")
 	private List<LineaPresupuesto> lineasPresupuestos;
 	
 	@ManyToOne
@@ -192,7 +197,16 @@ public class Presupuesto {
 		return true;
 	}
 	
+	public void addLineaPresupuesto(LineaPresupuesto lp) {
+		this.lineasPresupuestos.add(lp);
+		lp.setPresupuesto(this);
+		
+	}
 	
+	public void removeLineaPresupuesto(LineaPresupuesto lp) {
+		this.lineasPresupuestos.remove(lp);
+		lp.setPresupuesto(null);
+	}
 	
 	
 }

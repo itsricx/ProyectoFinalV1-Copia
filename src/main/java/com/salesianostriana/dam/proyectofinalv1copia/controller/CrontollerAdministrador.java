@@ -55,16 +55,16 @@ public class CrontollerAdministrador {
 	@GetMapping("nuevo/administrador")
 	public String mostrarFormularioRegistroAdministrador(Model model) {
 		model.addAttribute("administrador", new Administrador());
-		return "html/plantillaFormularioRegistroAdministrador";
+		return "html/plantillaFormularioRegistroAdmin";
 	}
 
 	
-	
+	//ESTE REDIRIGIRA AL PANEL DE CONTROL DE ADMIN
 	// METODO RESPUESTA FORMULARIO REGISTRO_DE_ADMINISTRADOR
-	@PostMapping("nuevo/administrador/submmit")
+	@PostMapping("nuevo/administrador/submit")
 	public String procesarFormularioRegistroAdministrador(@ModelAttribute("administrador") Administrador a) {
 		administradorServicio.add(a);
-		return "html/plantillaPanelControlAdmin";
+		return "html/pruebaAgregarAdmin";
 	}
 
 
