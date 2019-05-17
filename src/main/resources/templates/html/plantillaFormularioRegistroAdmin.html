@@ -12,7 +12,8 @@
 <body>
     <div class="container" id="advanced-search-form">
         <h2>Formulario de Registro de Cliente</h2>
-        <form method="POST" th:action="@{/admin/nuevo/administrador/submit}" th:object="${administrador}">
+        <form method="POST" th:action="${administrador.id !=0} ? @{/admin/editarAdmin/submit} : @{/admin/nuevo/administrador/submit}" th:object="${administrador}">
+            <input th:if = "${administrador.id !=0}" type = "hidden" name = "id" th:field ="*{id}"/>
              <div class="form-group">
                 <label for="DNI">DNI</label>
                 <input type="text" class="form-control" placeholder="DNI" id="DNI" th:field="*{DNI}">

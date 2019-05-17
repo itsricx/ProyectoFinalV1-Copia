@@ -33,8 +33,11 @@
 <tr>
 	<td>DNI:</td>
 	<td th:text="${administrador.DNI}"></td>
-
+	<td>
+				<a href="#" th:href="@{/admin/editarAdmin/{id}(id=${administrador.id})}">Editar</a> | 
+			</td>
 </tr>
+
 </table>
 </body>
 </html>

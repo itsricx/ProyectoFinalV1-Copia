@@ -82,10 +82,10 @@ public class CrontollerAdministrador {
 	@GetMapping("editarAdmin/{id}")
 	public String mostrarFormularioEditarAdmin(@PathVariable("id") long id, Model model) {
 	
-		Administrador cAdministrador = administradorServicio.findById(id);
+		Administrador administrador = administradorServicio.findById(id);
 		
-		if(cAdministrador != null) {
-			model.addAttribute("administrador", cAdministrador);
+		if(administrador != null) {
+			model.addAttribute("administrador", administrador);
 			
 		}else {
 			return "html/plantillaListadoAdmin";
