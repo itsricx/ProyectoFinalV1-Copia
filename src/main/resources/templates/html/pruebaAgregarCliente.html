@@ -32,6 +32,10 @@
 <tr>
 	<td>Telefono:</td>
 	<td th:text="${cliente.telefono}"></td>
+	
+	<td>
+				<a href="#" th:href="@{/cliente/editarPerfil/{id}(id=${cliente.id})}">Editar</a> | 
+			</td>
 
 </tr>
 </table>

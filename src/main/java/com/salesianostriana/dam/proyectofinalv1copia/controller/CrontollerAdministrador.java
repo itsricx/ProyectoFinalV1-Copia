@@ -64,16 +64,16 @@ public class CrontollerAdministrador {
 	@PostMapping("nuevo/administrador/submit")
 	public String procesarFormularioRegistroAdministrador(@ModelAttribute("administrador") Administrador a) {
 		administradorServicio.add(a);
-		return "html/pruebaAgregarAdmin";
+		return "html/plantillaListadoAdmin";
 	}
 
 
-	
+	//ESTO ENVIARA AL LISTADO DE ADMINISTRADORES
 	// METODO BORRAR UN ADMIN
 	@GetMapping("borrar/admin/{id}")
 	public String borrarAdmin(@PathVariable("id") long id) {
 		administradorServicio.delete(id);
-		return "htm/plantillaListadoAdmin";
+		return "html/plantillaListadoAdmin";
 		
 	}
 	
@@ -94,7 +94,7 @@ public class CrontollerAdministrador {
 	}
 	
 	
-	
+	//ESTO ENVIARA AL LISTADO DE ADMIN
 	//METODO EDITAR UN ADMINISTRADOR(PROCESAR)
 	@PostMapping("editarAdmin/submit")
 	public String procesarFormularioEditarAdmin(@ModelAttribute("administrador") Administrador A)

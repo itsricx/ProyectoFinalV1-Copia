@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import com.salesianostriana.dam.proyectofinalv1copia.model.Cliente;
 import com.salesianostriana.dam.proyectofinalv1copia.services.ClienteServicio;
 
@@ -36,12 +35,21 @@ public class ControllerCliente {
 		return "html/plantillaFormularioRegistroCliente";
 		
 	}
+	//METODO RELLENAR FORMULARIO DE REGISTRO DE UN CLIENTE POR PARTE DE UN ADMIN
+	@GetMapping("admin/nuevoCliente")
+	public String mostrarFormularioRegistroClienteAdmin(Model model) {
+		
+		model.addAttribute("cliente", new Cliente());
+		return "html/plantillaFormularioRegistroClienteAdmin";
+		
+	}
+	
 	//ESTE SE MODIFICARA PARA QUE ENTRE EN EL PANEL DE CONTROL
 	//METODO ENVIAR RESPUESTA FORMULARIO DE REGISTRO
 	@PostMapping("nuevoCliente/submit")
 	public String procesarFormularioRegistroCliente(@ModelAttribute("cliente") Cliente C) {
 		clienteServicio.add(C);
-		return "html/plantillaPanelControlCliente";
+		return "html/pruebaAgregarCliente";
 		
 	}
 	//ESTO ENVIARA AL LISTADO
@@ -49,7 +57,7 @@ public class ControllerCliente {
 	@PostMapping("admin/nuevoCliente/submit")
 	public String procesarFormularioRegistroClienteAdmin(@ModelAttribute("cliente") Cliente C) {
 		clienteServicio.add(C);
-		return "html/pruebaAgregarClienteAdmin";
+		return "html/plantillaListadoClientes";
 	}
 	
 	//METODO RELLENAR FORMULARIO INICIO DE SESION
@@ -85,34 +93,21 @@ public class ControllerCliente {
 		}
 		return "html/plantillaFormularioRegistroCliente";
 	}
+	//METODO EDITAR PERFIL(PROCESAR)
+		@PostMapping("editarPerfil/submit")
+		public String editarPerfil(@ModelAttribute("cliente") Cliente C) {
+			clienteServicio.edit(C);
+			
+			return "html/pruebaAgregarCliente";
+			
+		
+		}
 	
+		
 	// METODO BORRAR UN CLIENTE ADMIN
 	@GetMapping("admin/borrar/cliente/{id}")
 	public String borrarCliente(@PathVariable("id") long id) {
 		clienteServicio.delete(id);
-		return "html/plantillaListadoClientes";
-	}
-	
-	// METODO EDITAR UN CLIENTE(MOSTRAR FORMULARIO) ADMIN
-	@GetMapping("admin/editarCliente/{id}")
-	public String mostrarFormularioEditarCliente(@PathVariable("id") long id, Model model) {
-		Cliente cEditar = clienteServicio.findById(id);
-
-		if (cEditar != null) {
-			model.addAttribute("cliente", cEditar);
-		} else {
-			return "html/plantillaListadoClientes";
-
-		}
-
-		return "html/plantillaFormularioRegistroCliente";
-	}
-
-	// METODO EDITAR UN CLIENTE(PROCESAR FORMULARIO) ADMIN
-	@PostMapping("admin/editarCliente/submit")
-	public String procesarFormularioEditarCliente(@ModelAttribute("cliente") Cliente C) {
-
-		clienteServicio.edit(C);
 		return "html/plantillaListadoClientes";
 	}
 	
