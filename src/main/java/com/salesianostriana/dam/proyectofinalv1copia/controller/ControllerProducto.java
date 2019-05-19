@@ -63,7 +63,7 @@ public class ControllerProducto {
 			@PostMapping("nuevo/producto/submit")
 			public String procesarFormularioRegistroProducto(@ModelAttribute("producto") Producto p) {
 				productoServicio.add(p);
-				return "html/pruebaAgregarProducto";
+				return "html/plantillaListadoProducto";
 			}
 			
 			// METODO LISTAR PRODUCTOS POR NOMBRE

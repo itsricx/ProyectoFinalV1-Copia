@@ -12,7 +12,8 @@
 <body>
     <div class="container" id="advanced-search-form">
         <h2>Formulario de Registro de Producto</h2>
-        <form method="POST" th:action="@{/producto/nuevo/producto/submit}" th:object="${producto}">
+        <form method="POST" th:action=" ${producto.id != 0} ? @{/producto/editarProducto/submit} : @{/producto/nuevo/producto/submit}" th:object="${producto}">
+        <input th:if = "${producto.id !=0}" type = "hidden" name = "id" th:field ="*{id}"/>
             <div class="form-group">
                 <label for="Nombre">Nombre</label>
                 <input type="text" class="form-control" placeholder="Nombre" id="first-name" th:field="*{nombre}">
