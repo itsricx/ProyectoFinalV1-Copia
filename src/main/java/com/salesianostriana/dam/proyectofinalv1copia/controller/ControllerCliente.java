@@ -48,7 +48,7 @@ public class ControllerCliente {
 	//METODO ENVIAR RESPUESTA FORMULARIO DE REGISTRO
 	@PostMapping("nuevoCliente/submit")
 	public String procesarFormularioRegistroCliente(@ModelAttribute("cliente") Cliente C) {
-		clienteServicio.add(C);
+		clienteServicio.save(C);
 		return "html/pruebaAgregarCliente";
 		
 	}
@@ -56,7 +56,7 @@ public class ControllerCliente {
 	//METODO ENVIAR RESPUESTA FORMULARIO DE REGISTRO DE CLIENTE(ADMIN)
 	@PostMapping("admin/nuevoCliente/submit")
 	public String procesarFormularioRegistroClienteAdmin(@ModelAttribute("cliente") Cliente C) {
-		clienteServicio.add(C);
+		clienteServicio.save(C);
 		return "html/plantillaListadoClientes";
 	}
 	
@@ -107,7 +107,7 @@ public class ControllerCliente {
 	// METODO BORRAR UN CLIENTE ADMIN
 	@GetMapping("admin/borrar/cliente/{id}")
 	public String borrarCliente(@PathVariable("id") long id) {
-		clienteServicio.delete(id);
+		clienteServicio.deleteById(id);
 		return "html/plantillaListadoClientes";
 	}
 	

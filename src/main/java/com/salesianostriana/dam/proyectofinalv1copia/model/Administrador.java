@@ -1,7 +1,13 @@
 package com.salesianostriana.dam.proyectofinalv1copia.model;
 
+import java.util.Arrays;
+import java.util.Collection;
+
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 @Entity
 @DiscriminatorValue("A")
@@ -76,7 +82,10 @@ public class Administrador extends Usuario {
 		return true;
 	}
 	
-	
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		return Arrays.asList(new SimpleGrantedAuthority("ROLE_ADMIN"));
+	}
 
 	
 

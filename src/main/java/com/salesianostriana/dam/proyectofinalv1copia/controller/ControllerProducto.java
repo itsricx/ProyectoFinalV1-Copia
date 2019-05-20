@@ -62,7 +62,7 @@ public class ControllerProducto {
 			// METODO RESPUESTA FORMULARIO REGISTRO_DE_PRODUCTO ADMIN
 			@PostMapping("nuevo/producto/submit")
 			public String procesarFormularioRegistroProducto(@ModelAttribute("producto") Producto p) {
-				productoServicio.add(p);
+				productoServicio.save(p);
 				return "html/plantillaListadoProducto";
 			}
 			
@@ -71,7 +71,7 @@ public class ControllerProducto {
 			// METODO BORRAR UN PRODUCTO ADMIN
 			@GetMapping("/borrar/producto/{id}")
 			public String borrarProducto(@PathVariable("id") long id) {
-				productoServicio.delete(id);
+				productoServicio.deleteById(id);
 				return "html/plantillaListadoProducto";
 			}
 			
