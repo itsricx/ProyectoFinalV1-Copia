@@ -50,9 +50,9 @@ public class CustomSuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
 
 		//ESTE METODO SE DEBE DE CAMBIAR PARA REDIRIGIR A PANEL DE CONTROL USER O PANEL DE CONTROL ADMIN
 		if (isAdmin(roles)) {
-			url = "/admin/";
+			url = "html/plantillaPanelControlAdmin";
 		} else if (isUser(roles)) {
-			url = "/";
+			url = "html/plantillaPanelControlCliente";
 		} else {
 			url = "/html/plantillaAccesoDenegado";
 		}
