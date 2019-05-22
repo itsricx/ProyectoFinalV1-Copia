@@ -1291,3 +1291,7 @@ Wrong user name or password [28000-199]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:459)
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:427)
 	... 58 more
+2019-05-22 09:44:37 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "SELECT * FROM USUARIO PRESUPUESTO LINEA_PRESUPUESTO[*]"
+Syntax error in SQL statement "SELECT * FROM USUARIO PRESUPUESTO LINEA_PRESUPUESTO[*]"; SQL statement:
+SELECT * FROM USUARIO PRESUPUESTO LINEA_PRESUPUESTO [42000-199]

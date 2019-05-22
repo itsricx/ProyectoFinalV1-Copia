@@ -6,7 +6,7 @@
 <link th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}"
 	rel="stylesheet" />
 <link th:href="@{/css/StyleListados.css}" rel="stylesheet" />
-<title>Persons</title>
+<title>ListadoClientes</title>
 </head>
 <body>
 	<div class="container">
@@ -28,8 +28,12 @@
 					<td th:text="${cliente.edad}"></td>
 					<td th:text="${cliente.email}"></td>
 					<td th:text="${cliente.telefono}"></td>
+					<td>
+	<a href="#" th:href="@{/cliente/admin/borrar/cliente/{id}(id=${cliente.id})}">Borrar</a>|
+				</td>
 				</tr>
 			</table>
+			<a href="#" th:href="@{/cliente/admin/nuevoCliente/}">Añadir otro cliente</a>|
 		</div>
 		<div class="row">	
 			<div th:if="${clients.totalPages != 1}"

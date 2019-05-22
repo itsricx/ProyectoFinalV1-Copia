@@ -62,7 +62,7 @@ public class ControllerCliente {
 	@PostMapping("nuevoCliente/submit")
 	public String procesarFormularioRegistroCliente(@ModelAttribute("cliente") Cliente C) {
 		clienteServicio.save(C);
-		return "html/pruebaAgregarCliente";
+		return "html/plantillaVerPerfil";
 		
 	}
 	//ESTO ENVIARA AL LISTADO
@@ -70,7 +70,7 @@ public class ControllerCliente {
 	@PostMapping("admin/nuevoCliente/submit")
 	public String procesarFormularioRegistroClienteAdmin(@ModelAttribute("cliente") Cliente C) {
 		clienteServicio.save(C);
-		return "html/plantillaListadoClientes";
+		return "redirect:/cliente/admin/verListadoClientes";
 	}
 	
 	
@@ -125,7 +125,7 @@ public class ControllerCliente {
 		public String editarPerfil(@ModelAttribute("cliente") Cliente C) {
 			clienteServicio.edit(C);
 			
-			return "html/pruebaAgregarCliente";
+			return "html/plantillaVerPerfil";
 			
 		
 		}
@@ -135,7 +135,7 @@ public class ControllerCliente {
 	@GetMapping("admin/borrar/cliente/{id}")
 	public String borrarCliente(@PathVariable("id") long id) {
 		clienteServicio.deleteById(id);
-		return "html/plantillaListadoClientes";
+		return "redirect:/cliente/admin/verListadoClientes";
 	}
 	
 	}

@@ -30,7 +30,7 @@ public class ControllerProducto {
 	}
 
 			//METODO LISTAR TODOS LOS PRODUCTOS ADMIN
-			@GetMapping("/listadoProductoAdmin")
+			@GetMapping("listadoProductoAdmin")
 			public String mostrarTodosProductosAdmin(Model model) {
 				model.addAttribute("lista", productoServicio.findAll());
 				return "html/plantillaListadoProducto";
@@ -45,7 +45,7 @@ public class ControllerProducto {
 			
 			
 			//METODO LISTAR TODOS LOS PRODUCTOS CLIENTE
-			@GetMapping("/listadoProductoCliente")
+			@GetMapping("listadoProductoCliente")
 			public String mostrarTodosProductosCliente(Model model) {
 				model.addAttribute("lista", productoServicio.findAll());
 				return "html/plantillaListadoProductoCliente";
