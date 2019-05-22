@@ -6,6 +6,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -44,6 +46,7 @@ public class ControllerCliente {
 	//METODO RELLENAR FORMULARIO DE REGISTRO
 	@GetMapping("nuevoCliente")
 	public String mostrarFormularioRegistroCliente(Model model) {
+		
 		model.addAttribute("cliente", new Cliente());
 		return "html/plantillaFormularioRegistroCliente";
 		
@@ -61,14 +64,18 @@ public class ControllerCliente {
 	//METODO ENVIAR RESPUESTA FORMULARIO DE REGISTRO
 	@PostMapping("nuevoCliente/submit")
 	public String procesarFormularioRegistroCliente(@ModelAttribute("cliente") Cliente C) {
+		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		C.setPassword(passwordEncoder.encode(C.getPassword()));
 		clienteServicio.save(C);
+
 		return "html/plantillaVerPerfil";
 		
 	}
-	//ESTO ENVIARA AL LISTADO
 	//METODO ENVIAR RESPUESTA FORMULARIO DE REGISTRO DE CLIENTE(ADMIN)
 	@PostMapping("admin/nuevoCliente/submit")
 	public String procesarFormularioRegistroClienteAdmin(@ModelAttribute("cliente") Cliente C) {
+		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		C.setPassword(passwordEncoder.encode(C.getPassword()));
 		clienteServicio.save(C);
 		return "redirect:/cliente/admin/verListadoClientes";
 	}
@@ -102,7 +109,7 @@ public class ControllerCliente {
 	        model.addAttribute("selectedPageSize", evalPageSize);
 	        model.addAttribute("pager", pager);
 	    	
-	    	return "html/PruebaListado";
+	    	return "html/PlantillaListadoClientes";
 	    }
 	
 	//METODO EDITAR PERFIL
@@ -136,6 +143,11 @@ public class ControllerCliente {
 	public String borrarCliente(@PathVariable("id") long id) {
 		clienteServicio.deleteById(id);
 		return "redirect:/cliente/admin/verListadoClientes";
+	}
+	
+	@GetMapping("accederPanelControlCliente")
+	public String accederPanelCliente() {
+		return "html/plantillaPanelControlCliente";
 	}
 	
 	}
