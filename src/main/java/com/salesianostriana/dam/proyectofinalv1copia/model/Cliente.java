@@ -28,7 +28,6 @@ public class Cliente extends Usuario{
 
 	//Atributos
 	private Integer edad;
-	private Character sexo;
 	
 	@EqualsAndHashCode.Exclude
 	@ToString.Exclude
@@ -43,14 +42,12 @@ public class Cliente extends Usuario{
 	 * @param telefono
 	 * @param password
 	 * @param edad
-	 * @param sexo
 	 * @param listaPresupuestos
 	 */
 	public Cliente(long id, String nombre, String apellidos, String email, String telefono, String password,
-			Integer edad, Character sexo, List<Presupuesto> listaPresupuestos) {
+			Integer edad, List<Presupuesto> listaPresupuestos) {
 		super(id, nombre, apellidos, email, telefono, password);
 		this.edad = edad;
-		this.sexo = sexo;
 		this.listaPresupuestos = listaPresupuestos;
 	}
 	
@@ -65,12 +62,7 @@ public class Cliente extends Usuario{
 		return edad;
 	}
 
-	/**
-	 * @return the sexo
-	 */
-	public Character getSexo() {
-		return sexo;
-	}
+
 
 	/**
 	 * @return the listaPresupuestos
@@ -86,12 +78,7 @@ public class Cliente extends Usuario{
 		this.edad = edad;
 	}
 
-	/**
-	 * @param sexo the sexo to set
-	 */
-	public void setSexo(Character sexo) {
-		this.sexo = sexo;
-	}
+	
 
 	/**
 	 * @param listaPresupuestos the listaPresupuestos to set
@@ -100,18 +87,14 @@ public class Cliente extends Usuario{
 		this.listaPresupuestos = listaPresupuestos;
 	}
 
-	@Override
-	public String toString() {
-		return "Cliente [edad=" + edad + ", sexo=" + sexo + ", listaPresupuestos=" + listaPresupuestos + "]";
-	}
-
+	
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
 		result = prime * result + ((edad == null) ? 0 : edad.hashCode());
 		result = prime * result + ((listaPresupuestos == null) ? 0 : listaPresupuestos.hashCode());
-		result = prime * result + ((sexo == null) ? 0 : sexo.hashCode());
 		return result;
 	}
 
@@ -134,14 +117,14 @@ public class Cliente extends Usuario{
 				return false;
 		} else if (!listaPresupuestos.equals(other.listaPresupuestos))
 			return false;
-		if (sexo == null) {
-			if (other.sexo != null)
-				return false;
-		} else if (!sexo.equals(other.sexo))
-			return false;
 		return true;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Cliente [edad=" + edad + ", listaPresupuestos=" + listaPresupuestos + "]";
+	}
+
 	//Metodo helper
 	public void addPresupuesto(Presupuesto p) {
 		this.listaPresupuestos.add(p);

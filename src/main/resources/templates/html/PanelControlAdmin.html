@@ -10,29 +10,24 @@
     background: url("../jpg/background.jpg") no-repeat;
 	background-size: cover;
     min-height: 100%;
-h2{
-color:white;
-}
-p{
-color: blanchedalmond;
-}
 </style>
 
 <title>Panel de Control del Administrador</title>
 </head>
 <body>
-<h2>Panel de control de administrador </h2>
-<p>Bienvenido a casa Administrador</p>
+<h2 style = "color:white">Panel de control de administrador </h2>
+  <p style="color:White">Bienvenido a casa Administrador</p>
 <div class="w3-bar w3-blue-grey">
   <a href="#" th:href="@{/cliente/admin/nuevoCliente}" class="w3-bar-item w3-button">Añadir nuevo cliente</a>
   <a href="#" th:href="@{/producto/nuevo/producto}" class="w3-bar-item w3-button">Añadir nuevo producto</a>
 
   <a href="#" th:href="@{/admin/nuevo/administrador}" class="w3-bar-item w3-button">Añadir nuevo administrador</a>
 
-  <a href="#" class="w3-bar-item w3-button">Listado de productos</a>
-  <a href="#" class="w3-bar-item w3-button">Listado de clientes</a>
-  <a href="#" class="w3-bar-item w3-button">Listado de administradores</a>
-</div>
+  <a href="#" th:href="@{/producto/verListadoProductos}" class="w3-bar-item w3-button">Lista de productos</a>
+  <a href="#" th:href="@{/cliente/admin/verListadoClientes}" class="w3-bar-item w3-button">Lista de clientes</a>
+  <a href="#" th:href="@{/admin/verListadoAdmin}" class="w3-bar-item w3-button">Lista de administradores</a>
+  <a href="#" th:href="@{/logout}" class="w3-bar-item w3-button">Cerrar sesion</a>
+  </div>
 
 </body>
 </html>
