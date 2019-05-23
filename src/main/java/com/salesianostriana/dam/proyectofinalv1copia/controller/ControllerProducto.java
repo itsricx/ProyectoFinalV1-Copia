@@ -63,29 +63,22 @@ public class ControllerProducto {
         model.addAttribute("selectedPageSize", evalPageSize);
         model.addAttribute("pager", pager);
     	
-    	return "html/plantillaListadoProducto";
+    	return "html/ListadoProducto";
     }
-			
-//			@GetMapping("/")
-//			public String index() {
-//				
-//				return "html/Index";
-//				
-//			}
 			
 			
 			//METODO LISTAR TODOS LOS PRODUCTOS CLIENTE
 			@GetMapping("listadoProductoCliente")
 			public String mostrarTodosProductosCliente(Model model) {
 				model.addAttribute("lista", productoServicio.findAll());
-				return "html/plantillaListadoProductoCliente";
+				return "html/ListadoProductosCliente";
 			}
 			
 			// METODO MOSTRAR FORMULARIO REGISTRO_DE_PRODUCTO ADMIN
 			@GetMapping("nuevo/producto")
 			public String mostrarFormularioRegistroProducto(Model model) {
 				model.addAttribute("producto", new Producto());
-				return "html/plantillaFormularioRegistroProducto";
+				return "html/RegistroProducto";
 			}
 
 			
@@ -117,7 +110,7 @@ public class ControllerProducto {
 
 				}
 
-				return "html/plantillaFormularioRegistroProducto";
+				return "html/RegistroProducto";
 			}
 			
 			// METODO EDITAR UN PRODUCTO(RESPUESTA) ADMIN

@@ -45,7 +45,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http
 			.authorizeRequests()
 			.antMatchers("/css/**","/js/**","/webjars/**", "/h2-console/**","/html/**","/jpg/**", "/cliente/nuevoCliente/**").permitAll()
-				.antMatchers("/cliente/admin/**","/admin/**","/producto/listadoProductoAdmin","/producto/nuevo/producto/**","/producto/borrar/producto/**","/producto/editarProducto/**").hasAnyRole("ADMIN")
+				.antMatchers("/cliente/admin/**","/admin/**","/producto/listadoProductoAdmin","/producto/nuevo/producto/**","/producto/borrar/producto/**","/producto/editarProducto/**","admin/accederPanelControlAdmin").hasAnyRole("ADMIN")
 				.antMatchers("/cliente/accederPanelControlCliente").hasAnyRole("USER")
 				.anyRequest().authenticated()
 				.and()
@@ -59,7 +59,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.permitAll()
 				.and()
 			.exceptionHandling()
-				.accessDeniedPage("/html/plantillaAccesoDenegado");
+				.accessDeniedPage("/html/AccesoDenegado");
 		
 		// Añadimos esto para poder seguir accediendo a la consola de H2
 		// con Spring Security habilitado.

@@ -16,7 +16,6 @@
 		<div class="row">
 			<table class="table">
 				<tr>
-					<th>Id</th>
 			<th>Nombre</th>
 			<th>Apellidos</th>
 			<th>Email</th>
@@ -46,32 +45,32 @@
 					<li th:class="${administrators.number == 0} ? disabled">
 						<!-- Este enlace nos debe llevar a la primera página, con el tamaño de página actual -->
 						<a class="pageLink"
-						th:href="@{/(pageSize=${selectedPageSize}, page=1)}">&laquo;</a>
+						th:href="@{/admin/verListadoAdmin/(pageSize=${selectedPageSize}, page=1)}">&laquo;</a>
 					</li>
 					<!-- Si el número de página es cero, deshabilitamos el enlace -->
 					<li th:class="${administrators.number == 0} ? disabled">
 						<!-- Este enlace nos debe llevar a la página anterior, con el tamaño de página actual -->						
-						<a class="pageLink" th:href="@{/(pageSize=${selectedPageSize}, page=${administrators.number})}">&larr;</a>
+						<a class="pageLink" th:href="@{/admin/verListadoAdmin/(pageSize=${selectedPageSize}, page=${administrators.number})}">&larr;</a>
 					</li>
 					<!-- Este bucle genera los enlaces para las demás páginas -->
 					<li
 						th:class="${administrators.number == (page - 1)} ? 'active pointer-disabled'"
 						th:each="page : ${#numbers.sequence(pager.startPage, pager.endPage)}">
 						<a class="pageLink"
-						th:href="@{/(pageSize=${selectedPageSize}, page=${page})}"
+						th:href="@{/admin/verListadoAdmin/(pageSize=${selectedPageSize}, page=${page})}"
 						th:text="${page}"></a>
 					</li>
 					<!-- Enlace a la siguiente página; si estamos en la última queda desabilitado  -->
 					<li
 						th:class="${administrators.number + 1 == administrators.totalPages} ? disabled">
 						<a class="pageLink"
-						th:href="@{/(pageSize=${selectedPageSize}, page=${administrators.number + 2})}">&rarr;</a>
+						th:href="@{/admin/verListadoAdmin/(pageSize=${selectedPageSize}, page=${administrators.number + 2})}">&rarr;</a>
 					</li>
 					<!-- Enlace a la última página; si estamos en la última queda desabilitado  -->				
 					<li
 						th:class="${administrators.number + 1 == administrators.totalPages} ? disabled">
 						<a class="pageLink"
-						th:href="@{/(pageSize=${selectedPageSize}, page=${administrators.totalPages})}">&raquo;</a>
+						th:href="@{/admin/verListadoAdmin/(pageSize=${selectedPageSize}, page=${administrators.totalPages})}">&raquo;</a>
 					</li>
 				</ul>
 			</div>

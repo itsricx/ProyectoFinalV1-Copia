@@ -55,7 +55,55 @@ public class ProyectoFinalV1CopiaApplication {
 			
 			servicio.save(cliente2);
 			
+			Cliente cliente3 = new Cliente();
+			cliente3.setNombre("Miguel");
+			cliente3.setEdad(20);
+			cliente3.setApellidos("Mejias");
+			cliente3.setTelefono("6502944");
+			cliente3.setEmail("cliente3.cliente3@salesianostriana.com");
+			cliente3.setPassword(passwordEncoder.encode("12345678"));
 			
+			servicio.save(cliente3);
+			
+			Cliente cliente4 = new Cliente();
+			cliente4.setNombre("Luis Miguel");
+			cliente4.setEdad(29);
+			cliente4.setApellidos("Lopez");
+			cliente4.setTelefono("6502944123");
+			cliente4.setEmail("cliente4.cliente4@salesianostriana.com");
+			cliente4.setPassword(passwordEncoder.encode("123456789"));
+			
+			servicio.save(cliente4);
+			
+			Cliente cliente5 = new Cliente();
+			cliente5.setNombre("Javier");
+			cliente5.setEdad(24);
+			cliente5.setApellidos("Lopez Bosco");
+			cliente5.setTelefono("62944123");
+			cliente5.setEmail("cliente5.cliente5@salesianostriana.com");
+			cliente5.setPassword(passwordEncoder.encode("12345678931"));
+			
+			servicio.save(cliente5);
+			
+			Cliente cliente6 = new Cliente();
+			cliente6.setNombre("Marta");
+			cliente6.setEdad(29);
+			cliente6.setApellidos("Fernandez");
+			cliente6.setTelefono("6504123");
+			cliente6.setEmail("cliente6.cliente6@salesianostriana.com");
+			cliente6.setPassword(passwordEncoder.encode("123456789456"));
+			
+			servicio.save(cliente6);
+			
+			Cliente cliente7 = new Cliente();
+			cliente7.setNombre("Carmen");
+			cliente7.setEdad(52);
+			cliente7.setApellidos("Dorado");
+			cliente7.setTelefono("65029413");
+			cliente7.setEmail("cliente7.cliente7@salesianostriana.com");
+			cliente7.setPassword(passwordEncoder.encode("22123456789"));
+			
+			servicio.save(cliente7);
 					
 		};
 	}

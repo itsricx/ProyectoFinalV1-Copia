@@ -14,7 +14,9 @@ public class MvcConfig implements WebMvcConfigurer {
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
 		registry.addViewController("/login");
-		registry.addViewController("/html/plantillaAccesoDenegado");
+		registry.addViewController("/html/AccesoDenegado");
+		registry.addViewController("/html/PanelControlAdmin");
+		registry.addViewController("/html/PanelControlCliente");
 	}
 
 	

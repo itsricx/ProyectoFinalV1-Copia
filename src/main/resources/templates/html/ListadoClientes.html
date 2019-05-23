@@ -11,63 +11,65 @@
 <body>
 	<div class="container">
 		<div class="row">
-			<h1>Listado de Productos</h1>
+			<h1>Listado de Clientes</h1>
 		</div>
 		<div class="row">
 			<table class="table">
 				<tr>
 					<th>Nombre</th>
-					<th>Descripcion</th>
-					<th>Fecha de Entrada</th>
-					<th>Precio</th>
+					<th>Apellidos</th>
+					<th>Edad</th>
+					<th>Email</th>
+					<th>Telefono</th>
+					<th>Opciones</th>
 				</tr>
-				<tr th:each="producto : ${products}">
-					<td th:text="${producto.nombre}"></td>
-					<td th:text="${producto.descripcion}"></td>
-					<td th:text="${producto.fechaEntrada}"></td>
-					<td th:text="${producto.precio}"></td>
+				<tr th:each="cliente : ${clients}">
+					<td th:text="${cliente.nombre}"></td>
+					<td th:text="${cliente.apellidos}"></td>
+					<td th:text="${cliente.edad}"></td>
+					<td th:text="${cliente.email}"></td>
+					<td th:text="${cliente.telefono}"></td>
 					<td>
-			<a href="#" th:href="@{/producto/editarProducto/{id}(id=${producto.id})}">Editar</a> | 
-			<a href="#" th:href="@{/producto/borrar/producto/{id}(id=${producto.id})}">Borrar</a>
+	<a href="#" th:href="@{/cliente/admin/borrar/cliente/{id}(id=${cliente.id})}">Borrar</a>|
 				</td>
 				</tr>
 			</table>
-			<a href="#" th:href="@{/producto/nuevo/producto}">Añadir otro producto</a>
+			<a href="#" th:href="@{/cliente/admin/nuevoCliente/}">Añadir otro cliente</a>|
 		</div>
 		<div class="row">	
-			<div th:if="${products.totalPages != 1}"
+			<div th:if="${clients.totalPages != 1}"
 				class="form-group col-md-11 pagination-centered">
 				<ul class="pagination">
 					<!-- Si el número de página es cero, deshabilitamos el enlace -->
-					<li th:class="${products.number == 0} ? disabled">
+					<li th:class="${clients.number == 0} ? disabled">
 						<!-- Este enlace nos debe llevar a la primera página, con el tamaño de página actual -->
 						<a class="pageLink"
-						th:href="@{/(pageSize=${selectedPageSize}, page=1)}">&laquo;</a>
+						th:href="@{/cliente/admin/verListadoClientes/(pageSize=${selectedPageSize}, page=1)}">&laquo;</a>
 					</li>
 					<!-- Si el número de página es cero, deshabilitamos el enlace -->
-					<li th:class="${products.number == 0} ? disabled">
+					<li th:class="${clients.number == 0} ? disabled">
 						<!-- Este enlace nos debe llevar a la página anterior, con el tamaño de página actual -->						
-						<a class="pageLink" th:href="@{/(pageSize=${selectedPageSize}, page=${products.number})}">&larr;</a>
+						<a class="pageLink" th:href="@{/cliente/admin/verListadoClientes/(pageSize=${selectedPageSize}, page=${clients.number})}">&larr;</a>
 					</li>
 					<!-- Este bucle genera los enlaces para las demás páginas -->
 					<li
-						th:class="${products.number == (page - 1)} ? 'active pointer-disabled'"
+						th:class="${clients.number == (page - 1)} ? 'active pointer-disabled'"
 						th:each="page : ${#numbers.sequence(pager.startPage, pager.endPage)}">
 						<a class="pageLink"
-						th:href="@{/(pageSize=${selectedPageSize}, page=${page})}"
+						th:href="@{/cliente/admin/verListadoClientes/(pageSize=${selectedPageSize}, page=${page})}"
 						th:text="${page}"></a>
 					</li>
 					<!-- Enlace a la siguiente página; si estamos en la última queda desabilitado  -->
 					<li
-						th:class="${products.number + 1 == products.totalPages} ? disabled">
+						th:class="${clients.number + 1 == clients.totalPages} ? disabled">
 						<a class="pageLink"
-						th:href="@{/(pageSize=${selectedPageSize}, page=${products.number + 2})}">&rarr;</a>
+						th:href="@{/cliente/admin/verListadoClientes/(pageSize=${selectedPageSize}, page=${clients.number + 2})}">&rarr;</a>
 					</li>
 					<!-- Enlace a la última página; si estamos en la última queda desabilitado  -->				
 					<li
-						th:class="${products.number + 1 == products.totalPages} ? disabled">
+						th:class="${clients.number + 1 == clients.totalPages} ? disabled">
 						<a class="pageLink"
-						th:href="@{/(pageSize=${selectedPageSize}, page=${products.totalPages})}">&raquo;</a>
+						th:href="@{/cliente/admin/verListadoClientes/(pageSize=${selectedPageSize}, page=${clients.totalPages})}">&raquo;</a>
 					</li>
 				</ul>
 			</div>
@@ -78,4 +80,3 @@
 	<script th:src="@{/js/app.js}"></script>
 </body>
 </html>
-			

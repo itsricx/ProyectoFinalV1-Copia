@@ -1,0 +1,38 @@
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style type="text/css">body{
+    background: url("../jpg/background.jpg") no-repeat;
+	background-size: cover;
+    min-height: 100%;
+h2{
+color:white;
+}
+p{
+color: blanchedalmond;
+}
+</style>
+
+<title>Panel de Control del Administrador</title>
+</head>
+<body>
+<h2>Panel de control de administrador </h2>
+<p>Bienvenido a casa Administrador</p>
+<div class="w3-bar w3-blue-grey">
+  <a href="#" th:href="@{/cliente/admin/nuevoCliente}" class="w3-bar-item w3-button">Añadir nuevo cliente</a>
+  <a href="#" th:href="@{/producto/nuevo/producto}" class="w3-bar-item w3-button">Añadir nuevo producto</a>
+
+  <a href="#" th:href="@{/admin/nuevo/administrador}" class="w3-bar-item w3-button">Añadir nuevo administrador</a>
+
+  <a href="#" class="w3-bar-item w3-button">Listado de productos</a>
+  <a href="#" class="w3-bar-item w3-button">Listado de clientes</a>
+  <a href="#" class="w3-bar-item w3-button">Listado de administradores</a>
+</div>
+
+</body>
+</html>

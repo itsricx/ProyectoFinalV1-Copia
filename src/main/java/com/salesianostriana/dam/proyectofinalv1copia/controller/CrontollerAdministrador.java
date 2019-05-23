@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.salesianostriana.dam.proyectofinalv1copia.model.Administrador;
-import com.salesianostriana.dam.proyectofinalv1copia.model.Cliente;
 import com.salesianostriana.dam.proyectofinalv1copia.model.Pager;
 import com.salesianostriana.dam.proyectofinalv1copia.services.AdministradorServicio;
 
@@ -48,7 +47,7 @@ public class CrontollerAdministrador {
 	public String mostrarFormularioRegistroAdministrador(Model model) {
 		
 		model.addAttribute("administrador", new Administrador());
-		return "html/plantillaFormularioRegistroAdmin";
+		return "html/RegistroAdmin";
 	}
 
 	
@@ -84,9 +83,9 @@ public class CrontollerAdministrador {
 			model.addAttribute("administrador", administrador);
 			
 		}else {
-			return "html/plantillaListadoAdmin";
+			return "html/ListadoAdmin";
 		}
-		return "html/plantillaFormularioRegistroAdmin";
+		return "html/RegistroAdmin";
 	}
 	
 	
@@ -125,6 +124,11 @@ public class CrontollerAdministrador {
 	        model.addAttribute("selectedPageSize", evalPageSize);
 	        model.addAttribute("pager", pager);
 	    	
-	    	return "html/PlantillaListadoAdmin";
+	    	return "html/ListadoAdmin";
 	    }
+	
+	 @GetMapping("accederPanelControlAdmin")
+		public String accederPanelAdmin() {
+			return "html/PanelControlAdmin";
+		}
 }

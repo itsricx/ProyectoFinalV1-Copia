@@ -28,6 +28,7 @@ public class ControllerCliente {
 	private static final int BUTTONS_TO_SHOW = 5;
     private static final int INITIAL_PAGE = 0;
     private static final int INITIAL_PAGE_SIZE = 5;
+    private static final int[] PAGE_SIZES = {5, 10, 20, 50};
 	
 	
 	@Autowired
@@ -48,7 +49,7 @@ public class ControllerCliente {
 	public String mostrarFormularioRegistroCliente(Model model) {
 		
 		model.addAttribute("cliente", new Cliente());
-		return "html/plantillaFormularioRegistroCliente";
+		return "html/RegistroCliente";
 		
 	}
 	//METODO RELLENAR FORMULARIO DE REGISTRO DE UN CLIENTE POR PARTE DE UN ADMIN
@@ -56,7 +57,7 @@ public class ControllerCliente {
 	public String mostrarFormularioRegistroClienteAdmin(Model model) {
 		
 		model.addAttribute("cliente", new Cliente());
-		return "html/plantillaFormularioRegistroClienteAdmin";
+		return "html/RegistroClienteAdmin";
 		
 	}
 	
@@ -68,7 +69,7 @@ public class ControllerCliente {
 		C.setPassword(passwordEncoder.encode(C.getPassword()));
 		clienteServicio.save(C);
 
-		return "html/plantillaVerPerfil";
+		return "redirect:/login";
 		
 	}
 	//METODO ENVIAR RESPUESTA FORMULARIO DE REGISTRO DE CLIENTE(ADMIN)
@@ -107,9 +108,10 @@ public class ControllerCliente {
 	        
 	        model.addAttribute("clients", clients);
 	        model.addAttribute("selectedPageSize", evalPageSize);
+	        model.addAttribute("pageSizes", PAGE_SIZES);
 	        model.addAttribute("pager", pager);
 	    	
-	    	return "html/PlantillaListadoClientes";
+	    	return "html/ListadoClientes";
 	    }
 	
 	//METODO EDITAR PERFIL
@@ -122,17 +124,17 @@ public class ControllerCliente {
 				
 		}
 		else {
-			return "html/plantillaPanelControlCliente";
+			return "html/PanelControlCliente";
 			
 		}
-		return "html/plantillaFormularioRegistroCliente";
+		return "html/RegistroCliente";
 	}
 	//METODO EDITAR PERFIL(PROCESAR)
 		@PostMapping("editarPerfil/submit")
 		public String editarPerfil(@ModelAttribute("cliente") Cliente C) {
 			clienteServicio.edit(C);
 			
-			return "html/plantillaVerPerfil";
+			return "html/VerPerfil";
 			
 		
 		}
@@ -147,7 +149,7 @@ public class ControllerCliente {
 	
 	@GetMapping("accederPanelControlCliente")
 	public String accederPanelCliente() {
-		return "html/plantillaPanelControlCliente";
+		return "html/PanelControlCliente";
 	}
 	
 	}

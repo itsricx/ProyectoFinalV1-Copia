@@ -17,6 +17,8 @@ body{
     padding-bottom: 20px;
     margin: 10px 20px;
     font-size: 24px;
+    
+    margin-left: 24%;
 }
 
 #advanced-search-form hr{
@@ -33,6 +35,8 @@ body{
 	width: 30%;
     float:left;
     text-align: left;
+    
+    margin-left: 22%;
 }
 
 #advanced-search-form .form-control{

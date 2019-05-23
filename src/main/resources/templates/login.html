@@ -8,6 +8,8 @@
 </head>
 <body>
 	<form method="POST" action="#" th:action="@{/login}">
+		<div class="container" id="advanced-search-form">
+		<h2>Formulario de inicio de sesion</h2>
 		<div class="form-group">
 			<input type="text" id="username" name="username"
 				placeholder="Username" required autofocus>
@@ -16,9 +18,11 @@
 			<input type="password" name="password" id="password"
 				placeholder="Password" required>
 		</div>
-		   <button type="submit" class="btn btn-info btn-lg btn-responsive" id="search">Enviar</button>  
+		   <button type="submit" class="btn btn-info btn-lg btn-responsive" id="search">Iniciar Sesion</button>  
 					
-					<a th:href="@{/cliente/nuevoCliente}">Registrarse como cliente</a>
+			<button type="submit" class="btn btn-info btn-lg btn-responsive" id="search" th:href="@{/cliente/nuevoCliente}">Registrarse como cliente</button>			
+		</div>
+		
 	</form>
 	
 			
