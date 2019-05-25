@@ -1,14 +1,13 @@
 package com.salesianostriana.dam.proyectofinalv1copia.model;
 
 import java.time.LocalDate;
-import java.util.List;
+
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-
+import javax.persistence.ManyToOne;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.EqualsAndHashCode;
@@ -31,31 +30,28 @@ public class Producto {
 	
 	@EqualsAndHashCode.Exclude
 	@ToString.Exclude
-	@OneToMany(mappedBy = "producto")
-	private List<LineaPresupuesto> lineasPresupuesto;
+	@ManyToOne
+	private LineaPresupuesto lineaPresupuesto;
 
-	/**
-	 * @param id
-	 * @param nombre
-	 * @param descripcion
-	 * @param fechaEntrada
-	 * @param precio
-	 * @param lineasPresupuesto
-	 */
+	
+	
 	public Producto(long id, String nombre, String descripcion, LocalDate fechaEntrada, Double precio,
-			List<LineaPresupuesto> lineasPresupuesto) {
+			LineaPresupuesto lineaPresupuesto) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.fechaEntrada = fechaEntrada;
 		this.precio = precio;
-		this.lineasPresupuesto = lineasPresupuesto;
+		this.lineaPresupuesto = lineaPresupuesto;
 	}
-	
+
+
 	public Producto() {
 		
 	}
+
+
 
 	/**
 	 * @return the id
@@ -64,40 +60,7 @@ public class Producto {
 		return id;
 	}
 
-	/**
-	 * @return the nombre
-	 */
-	public String getNombre() {
-		return nombre;
-	}
 
-	/**
-	 * @return the descripcion
-	 */
-	public String getDescripcion() {
-		return descripcion;
-	}
-
-	/**
-	 * @return the fechaEntrada
-	 */
-	public LocalDate getFechaEntrada() {
-		return fechaEntrada;
-	}
-
-	/**
-	 * @return the precio
-	 */
-	public Double getPrecio() {
-		return precio;
-	}
-
-	/**
-	 * @return the lineasPresupuesto
-	 */
-	public List<LineaPresupuesto> getLineasPresupuesto() {
-		return lineasPresupuesto;
-	}
 
 	/**
 	 * @param id the id to set
@@ -106,12 +69,34 @@ public class Producto {
 		this.id = id;
 	}
 
+
+
+	/**
+	 * @return the nombre
+	 */
+	public String getNombre() {
+		return nombre;
+	}
+
+
+
 	/**
 	 * @param nombre the nombre to set
 	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
+
+
+	/**
+	 * @return the descripcion
+	 */
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+
 
 	/**
 	 * @param descripcion the descripcion to set
@@ -120,12 +105,34 @@ public class Producto {
 		this.descripcion = descripcion;
 	}
 
+
+
+	/**
+	 * @return the fechaEntrada
+	 */
+	public LocalDate getFechaEntrada() {
+		return fechaEntrada;
+	}
+
+
+
 	/**
 	 * @param fechaEntrada the fechaEntrada to set
 	 */
 	public void setFechaEntrada(LocalDate fechaEntrada) {
 		this.fechaEntrada = fechaEntrada;
 	}
+
+
+
+	/**
+	 * @return the precio
+	 */
+	public Double getPrecio() {
+		return precio;
+	}
+
+
 
 	/**
 	 * @param precio the precio to set
@@ -134,18 +141,33 @@ public class Producto {
 		this.precio = precio;
 	}
 
+
+
 	/**
-	 * @param lineasPresupuesto the lineasPresupuesto to set
+	 * @return the lineaPresupuesto
 	 */
-	public void setLineasPresupuesto(List<LineaPresupuesto> lineasPresupuesto) {
-		this.lineasPresupuesto = lineasPresupuesto;
+	public LineaPresupuesto getLineaPresupuesto() {
+		return lineaPresupuesto;
 	}
+
+
+
+	/**
+	 * @param lineaPresupuesto the lineaPresupuesto to set
+	 */
+	public void setLineaPresupuesto(LineaPresupuesto lineaPresupuesto) {
+		this.lineaPresupuesto = lineaPresupuesto;
+	}
+
+
 
 	@Override
 	public String toString() {
 		return "Producto [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", fechaEntrada="
-				+ fechaEntrada + ", precio=" + precio + ", lineasPresupuesto=" + lineasPresupuesto + "]";
+				+ fechaEntrada + ", precio=" + precio + ", lineaPresupuesto=" + lineaPresupuesto + "]";
 	}
+
+
 
 	@Override
 	public int hashCode() {
@@ -154,11 +176,13 @@ public class Producto {
 		result = prime * result + ((descripcion == null) ? 0 : descripcion.hashCode());
 		result = prime * result + ((fechaEntrada == null) ? 0 : fechaEntrada.hashCode());
 		result = prime * result + (int) (id ^ (id >>> 32));
-		result = prime * result + ((lineasPresupuesto == null) ? 0 : lineasPresupuesto.hashCode());
+		result = prime * result + ((lineaPresupuesto == null) ? 0 : lineaPresupuesto.hashCode());
 		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
 		result = prime * result + ((precio == null) ? 0 : precio.hashCode());
 		return result;
 	}
+
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -181,10 +205,10 @@ public class Producto {
 			return false;
 		if (id != other.id)
 			return false;
-		if (lineasPresupuesto == null) {
-			if (other.lineasPresupuesto != null)
+		if (lineaPresupuesto == null) {
+			if (other.lineaPresupuesto != null)
 				return false;
-		} else if (!lineasPresupuesto.equals(other.lineasPresupuesto))
+		} else if (!lineaPresupuesto.equals(other.lineaPresupuesto))
 			return false;
 		if (nombre == null) {
 			if (other.nombre != null)
@@ -198,15 +222,8 @@ public class Producto {
 			return false;
 		return true;
 	}
+
 	
-	public void addLineaPresupuesto(LineaPresupuesto lp) {
-		this.lineasPresupuesto.add(lp);
-		lp.setProducto(this);
-	}
 	
-	public void removeLineaPresupuesto(LineaPresupuesto lp) {
-		this.lineasPresupuesto.remove(lp);
-		lp.setProducto(null);
-	}
 	
 }
