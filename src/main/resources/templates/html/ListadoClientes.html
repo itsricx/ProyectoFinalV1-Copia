@@ -13,6 +13,23 @@
 		<div class="row">
 			<h1>Listado de Clientes</h1>
 		</div>
+		
+		<div class="trend-w3layouts">
+		<div class="container" style="margin-bottom: 3%;">
+		<div class="principal">
+		 <form action="#" th:action="@{/cliente/admin/verListadoClientes}" method="GET">
+		<input type="text" name="nombre" placeholder="Buscar Por Nombre" style="margin-left: 5%; padding: 4px;" />
+		<button class="btn- btn-danger" type="submit"  style="padding: 4px;">
+			<span class="glyphicon glyphicon-search"></span>
+		</button>
+		</form>
+		</div>
+		</div>
+		</div>
+		
+		
+		
+		
 		<div class="row">
 			<table class="table">
 				<tr>
@@ -30,11 +47,13 @@
 					<td th:text="${cliente.email}"></td>
 					<td th:text="${cliente.telefono}"></td>
 					<td>
-	<a href="#" th:href="@{/cliente/admin/borrar/cliente/{id}(id=${cliente.id})}">Borrar</a>|
+	<a href="#" th:href="@{/cliente/admin/borrar/cliente/{id}(id=${cliente.id})}">Borrar</a>/
+	<a href="#" th:href="@{/cliente/editarPerfil/{id}(id=${cliente.id})}">Editar</a>/
 				</td>
 				</tr>
 			</table>
-			<a href="#" th:href="@{/cliente/admin/nuevoCliente/}">Añadir otro cliente</a>|
+			<a href="#" th:href="@{/cliente/admin/nuevoCliente/}">Añadir otro cliente</a>
+			<a href="#" th:href="@{/admin/accederPanelControlAdmin}">Volver al menu</a>
 		</div>
 		<div class="row">	
 			<div th:if="${clients.totalPages != 1}"

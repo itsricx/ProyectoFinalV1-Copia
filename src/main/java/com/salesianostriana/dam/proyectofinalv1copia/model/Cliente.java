@@ -18,10 +18,12 @@ import lombok.ToString;
 
 /**
  * Esta clase define los metodos propios y los atributos de un cliente
+ * 
  * @author Ricardo Mejias Dorado
  * @version 1.0
  * 
- * */
+ */
+@SuppressWarnings("serial")
 @Entity
 @DiscriminatorValue("C")
 public class Cliente extends Usuario{
@@ -34,7 +36,7 @@ public class Cliente extends Usuario{
 	@OneToMany(mappedBy = "cliente")
 	private List<Presupuesto> listaPresupuestos;
 
-	/**
+	/**Constructor completo
 	 * @param id
 	 * @param nombre
 	 * @param apellidos
@@ -50,7 +52,10 @@ public class Cliente extends Usuario{
 		this.edad = edad;
 		this.listaPresupuestos = listaPresupuestos;
 	}
-	
+	/**
+	 * Constructor vacio
+	 * 
+	 * */
 	public Cliente() {
 		
 	}

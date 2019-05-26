@@ -6,13 +6,28 @@
 <link th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}"
 	rel="stylesheet" />
 <link th:href="@{/css/StyleListados.css}" rel="stylesheet" />
-<title>ListadoClientes</title>
+<title>ListadoProductos</title>
 </head>
 <body>
+
 	<div class="container">
 		<div class="row">
 			<h1>Listado de Productos</h1>
 		</div>
+		<div class="trend-w3layouts">
+		<div class="container" style="margin-bottom: 3%;">
+		<div class="principal">
+		 <form action="#" th:action="@{/producto/verListadoProductos}" method="GET">
+		<input type="text" name="nombre" placeholder="Buscar Por Nombre" style="margin-left: 5%; padding: 4px;" />
+		<button class="btn- btn-danger" type="submit"  style="padding: 4px;">
+			<span class="glyphicon glyphicon-search"></span>
+		</button>
+		</form>
+		</div>
+		</div>
+		</div>
+		
+		
 		<div class="row">
 			<table class="table">
 				<tr>
@@ -28,12 +43,13 @@
 					<td th:text="${producto.fechaEntrada}"></td>
 					<td th:text="${producto.precio}"></td>
 					<td>
-			<a href="#" th:href="@{/producto/editarProducto/{id}(id=${producto.id})}">Editar</a> | 
-			<a href="#" th:href="@{/producto/borrar/producto/{id}(id=${producto.id})}">Borrar</a>
+			<a href="#" th:href="@{/producto/editarProducto/{id}(id=${producto.id})}">Editar</a> / 
+			<a href="#" th:href="@{/producto/borrar/producto/{id}(id=${producto.id})}">Borrar</a>/
 				</td>
 				</tr>
 			</table>
 			<a href="#" th:href="@{/producto/nuevo/producto}">Añadir otro producto</a>
+			<a href="#" th:href="@{/admin/accederPanelControlAdmin}">Volver al menu</a>
 		</div>
 		<div class="row">	
 			<div th:if="${products.totalPages != 1}"

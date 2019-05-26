@@ -45,8 +45,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http
 			.authorizeRequests()
 			.antMatchers("/css/**","/js/**","/webjars/**", "/h2-console/**","/html/**","/jpg/**", "/cliente/nuevoCliente/**").permitAll()
-				.antMatchers("/cliente/admin/**","/admin/**","/producto/listadoProductoAdmin","/producto/nuevo/producto/**","/producto/borrar/producto/**","/producto/editarProducto/**","admin/accederPanelControlAdmin").hasAnyRole("ADMIN")
-				.antMatchers("/cliente/accederPanelControlCliente").hasAnyRole("USER")
+				.antMatchers("/cliente/admin/**","/admin/**","/producto/listadoProductoAdmin","/producto/nuevo/producto/**","/producto/borrar/producto/**","/producto/editarProducto/**","admin/accederPanelControlAdmin","/producto/verListadoProductos/**","/cliente/admin/verListadoClientes/**","/admin/verListadoAdmin/**").hasAnyRole("ADMIN")
+				.antMatchers("/cliente/accederPanelControlCliente","/producto/buscarProductos/**","/producto/buscarProductosBaratos/**","/cliente/Contacto","/presupuesto/VerCarrito/**","/presupuesto/agregarLineaPresupuesto/{id}/**").hasAnyRole("USER")
 				.anyRequest().authenticated()
 				.and()
 			.formLogin()

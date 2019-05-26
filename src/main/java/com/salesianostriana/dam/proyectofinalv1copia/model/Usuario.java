@@ -18,9 +18,12 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 
 /**
- * @author rmejias
- *@version 1.0
- */
+ * Esta clase define los metodos propios y los atributos de un usuario abstracto
+ * @author Ricardo Mejias Dorado
+ * @version 1.0
+ * 
+ * */
+@SuppressWarnings("serial")
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public abstract class Usuario implements UserDetails {
@@ -48,9 +51,6 @@ public abstract class Usuario implements UserDetails {
 	 * @param email
 	 * @param telefono
 	 * @param password
-	 * @param cuentaCaducada
-	 * @param cuentaBloqueada
-	 * @param credencialesCaducadas
 	 */
 	public Usuario(long id, String nombre, String apellidos, String email, String telefono, String password) {
 		super();
@@ -64,7 +64,11 @@ public abstract class Usuario implements UserDetails {
 		this.cuentaBloqueada = false;
 		this.credencialesCaducadas = false;
 	}
-	
+	/**
+	 * Constructor vacio
+	 *
+	 * 
+	 * */
 	public Usuario() {
 		
 	}

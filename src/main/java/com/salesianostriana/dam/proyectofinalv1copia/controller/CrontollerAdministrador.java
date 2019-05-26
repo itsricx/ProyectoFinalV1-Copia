@@ -21,7 +21,11 @@ import com.salesianostriana.dam.proyectofinalv1copia.model.Pager;
 import com.salesianostriana.dam.proyectofinalv1copia.services.AdministradorServicio;
 
 
-
+/**
+* Esta clase es la encargada de manejar las peticiones relacionadas con los administradores
+* @author Rick
+* @version 1.0
+* */
 @Controller
 @RequestMapping("/admin/")
 public class CrontollerAdministrador {
@@ -33,7 +37,7 @@ public class CrontollerAdministrador {
 	@Autowired
 	public AdministradorServicio administradorServicio;
 
-	/**
+	/**Constructor del controller administrador
 	 * @param administradorServicio
 	 */
 	public CrontollerAdministrador(AdministradorServicio administradorServicio) {
@@ -41,7 +45,11 @@ public class CrontollerAdministrador {
 		this.administradorServicio = administradorServicio;
 	}
 	
-
+	/**
+	 * Metodo que muestra el formulario de registro de un administrador
+	 * 
+	 * @param model return El formulario de registro
+	 */
 	// METODO MOSTRAR FORMULARIO REGISTRO_DE_ADMINISTRADOR
 	@GetMapping("nuevo/administrador")
 	public String mostrarFormularioRegistroAdministrador(Model model) {
@@ -50,8 +58,11 @@ public class CrontollerAdministrador {
 		return "html/RegistroAdmin";
 	}
 
-	
-	//ESTE REDIRIGIRA AL PANEL DE CONTROL DE ADMIN
+	/**
+	 * Metodo que procesa la informacion del formulario de registro de un admin
+	 * 
+	 * return El listado de admins paginado
+	 */
 	// METODO RESPUESTA FORMULARIO REGISTRO_DE_ADMINISTRADOR
 	@PostMapping("nuevo/administrador/submit")
 	public String procesarFormularioRegistroAdministrador(@ModelAttribute("administrador") Administrador a) {
@@ -62,7 +73,11 @@ public class CrontollerAdministrador {
 		return "redirect:/admin/verListadoAdmin";
 	}
 
-
+	/**
+	 * Metodo que borra un admin
+	 * 
+	 * @param id return El listado de admin paginado
+	 */
 	//ESTO ENVIARA AL LISTADO DE ADMINISTRADORES
 	// METODO BORRAR UN ADMIN
 	@GetMapping("borrar/admin/{id}")
@@ -72,7 +87,11 @@ public class CrontollerAdministrador {
 		
 	}
 	
-	
+	/**
+	 * Metodo que muestra el formulario para editar un admin
+	 * @param id
+	 * @param model return El formulario de registro de un admin
+	 */
 	// METODO EDITAR UN ADMINISTRADOR
 	@GetMapping("editarAdmin/{id}")
 	public String mostrarFormularioEditarAdmin(@PathVariable("id") long id, Model model) {
@@ -88,7 +107,11 @@ public class CrontollerAdministrador {
 		return "html/RegistroAdmin";
 	}
 	
-	
+	/**
+	 * Metodo que procesa el formulario para editar un admin
+	 * 
+	 * @param A return El listado de admin paginado
+	 */
 	//ESTO ENVIARA AL LISTADO DE ADMIN
 	//METODO EDITAR UN ADMINISTRADOR(PROCESAR)
 	@PostMapping("editarAdmin/submit")
@@ -99,25 +122,35 @@ public class CrontollerAdministrador {
 		return "redirect:/admin/verListadoAdmin";
 				
 	}
-	
+	/**
+	 * Metodo que muestra el listado de admins paginado
+	 * 
+	 * @param model
+	 * @param pageSize
+	 * @param page
+	 * @param nombre   return El listado de admins paginado
+	 */
 	 @GetMapping("verListadoAdmin")
-	    public String verListadoAdmin(@RequestParam("pageSize") Optional<Integer> pageSize,
-	            @RequestParam("page") Optional<Integer> page, Model model) {
+	 public String showAdmin(@RequestParam("pageSize") Optional<Integer> pageSize,
+	            @RequestParam("page") Optional<Integer> page, @RequestParam("nombre") Optional<String> nombre, Model model) {
 
-	    	// Evalúa el tamaño de página. Si el parámetro es "nulo", devuelve
-	    	// el tamaño de página inicial.
+	    	
 	        int evalPageSize = pageSize.orElse(INITIAL_PAGE_SIZE);
 	        
-	        // Calcula qué página se va a mostrar. Si el parámetro es "nulo" o menor
-	        // que 0, se devuelve el valor inicial. De otro modo, se devuelve el valor
-	        // del parámetro decrementado en 1.
+	      
 	        int evalPage = (page.orElse(0) < 1) ? INITIAL_PAGE : page.get() - 1;
 
-	        // Obtenemos la página definida por evalPage y evalPageSize de objetos de nuestro modelo
-	        Page<Administrador> administrators = administradorServicio.findAllPageable(PageRequest.of(evalPage, evalPageSize));
-	        // Creamos el objeto Pager (paginador) indicando los valores correspondientes.
-	        // Este sirve para que la plantilla sepa cuantas páginas hay en total, cuantos botones
-	        // debe mostrar y cuál es el número de objetos a dibujar.
+	        String evalNombre = nombre.orElse(null);
+	        
+	        Page<Administrador> administrators = null;
+	        
+	        if (evalNombre == null) {
+	        	administrators = administradorServicio.findAllPageable(PageRequest.of(evalPage, evalPageSize));
+	        } else {
+	        	administrators = administradorServicio.findByNombreContainingIgnoreCasePageable(evalNombre, PageRequest.of(evalPage, evalPageSize));
+	        }
+	        
+	       
 	        Pager pager = new Pager(administrators.getTotalPages(), administrators.getNumber(), BUTTONS_TO_SHOW);
 	        
 	        model.addAttribute("administrators", administrators);
@@ -126,7 +159,11 @@ public class CrontollerAdministrador {
 	    	
 	    	return "html/ListadoAdmin";
 	    }
-	
+	 /**
+		 * Metodo que redirecciona al panel de control
+		 * 
+		 * return El panel de control del admin
+		 */
 	 @GetMapping("accederPanelControlAdmin")
 		public String accederPanelAdmin() {
 			return "html/PanelControlAdmin";

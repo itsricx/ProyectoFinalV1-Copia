@@ -1,12 +1,101 @@
-//Plantilla para que el cliente vea los productos y los a�ada al presupuesto
-
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}"
+	rel="stylesheet" />
+<link th:href="@{/css/StyleListados.css}" rel="stylesheet" />
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<title>ListadoProductos</title>
 </head>
 <body>
+<div class="w3-bar w3-blue-grey">
+  <a href="#" th:href="@{/cliente/accederPanelControlCliente}" class="w3-bar-item w3-button">Volver al panel principal</a>
+  <a href="#" th:href="@{/logout}" class="w3-bar-item w3-button">Cerrar sesion</a>
+  <a href="#" th:href="@{/presupuesto/VerCarrito}" class="w3-bar-item w3-button">Ver presupuesto</a>
+  </div>
 
+	<div class="container">
+		<div class="row">
+			<h1>Listado de Productos</h1>
+		</div>
+		 <div class="trend-w3layouts">
+		<div class="container" style="margin-bottom: 3%;">
+		<div class="principal">
+		 <form action="#" th:action="@{/producto/buscarProductos}" method="GET">
+		<input type="text" name="nombre" placeholder="Buscar Por Nombre" style="margin-left: 5%; padding: 4px;" />
+		<button class="btn- btn-danger" type="submit"  style="padding: 4px;">
+			<span class="glyphicon glyphicon-search"></span>
+		</button>
+		</form>
+		</div>
+		</div>
+		</div>
+		
+		<div class="row">
+			<table class="table">
+				<tr>
+					<th>Nombre</th>
+					<th>Descripcion</th>
+					<th>Fecha de Entrada</th>
+					<th>Precio</th>
+					<th>Opciones</th>
+				</tr>
+				<tr th:each="producto : ${products}">
+					<td th:text="${producto.nombre}"></td>
+					<td th:text="${producto.descripcion}"></td>
+					<td th:text="${producto.fechaEntrada}"></td>
+					<td th:text="${producto.precio}"></td>
+					<td>
+					<a href="/presupuesto/agregarLineaPresupuesto/" th:href="@{/presupuesto/agregarLineaPresupuesto/{id}(id=${producto.id})}">Añadir al presupuesto</a>
+				</td>
+				</tr>
+			</table>
+		</div>
+		<div class="row">	
+			<div th:if="${products.totalPages != 1}"
+				class="form-group col-md-11 pagination-centered">
+				<ul class="pagination">
+					<!-- Si el número de página es cero, deshabilitamos el enlace -->
+					<li th:class="${products.number == 0} ? disabled">
+						<!-- Este enlace nos debe llevar a la primera página, con el tamaño de página actual -->
+						<a class="pageLink"
+						th:href="@{/producto/buscarProductos/(pageSize=${selectedPageSize}, page=1)}">&laquo;</a>
+					</li>
+					<!-- Si el número de página es cero, deshabilitamos el enlace -->
+					<li th:class="${products.number == 0} ? disabled">
+						<!-- Este enlace nos debe llevar a la página anterior, con el tamaño de página actual -->						
+						<a class="pageLink" th:href="@{/producto/buscarProductos/(pageSize=${selectedPageSize}, page=${products.number})}">&larr;</a>
+					</li>
+					<!-- Este bucle genera los enlaces para las demás páginas -->
+					<li
+						th:class="${products.number == (page - 1)} ? 'active pointer-disabled'"
+						th:each="page : ${#numbers.sequence(pager.startPage, pager.endPage)}">
+						<a class="pageLink"
+						th:href="@{/producto/buscarProductos/(pageSize=${selectedPageSize}, page=${page})}"
+						th:text="${page}"></a>
+					</li>
+					<!-- Enlace a la siguiente página; si estamos en la última queda desabilitado  -->
+					<li
+						th:class="${products.number + 1 == products.totalPages} ? disabled">
+						<a class="pageLink"
+						th:href="@{/producto/buscarProductos/(pageSize=${selectedPageSize}, page=${products.number + 2})}">&rarr;</a>
+					</li>
+					<!-- Enlace a la última página; si estamos en la última queda desabilitado  -->				
+					<li
+						th:class="${products.number + 1 == products.totalPages} ? disabled">
+						<a class="pageLink"
+						th:href="@{/producto/buscarProductos/(pageSize=${selectedPageSize}, page=${products.totalPages})}">&raquo;</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<script th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
+	<script th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+	<script th:src="@{/js/app.js}"></script>
 </body>
 </html>

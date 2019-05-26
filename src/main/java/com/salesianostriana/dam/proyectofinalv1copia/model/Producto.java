@@ -2,23 +2,23 @@ package com.salesianostriana.dam.proyectofinalv1copia.model;
 
 import java.time.LocalDate;
 
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
-
-
-
+/**
+ * Esta clase define los metodos propios y los atributos de un producto
+ * 
+ * @author Ricardo Mejias Dorado
+ * @version 1.0
+ * 
+ */
 @Entity
 public class Producto {
 
-	//Atributos
+	// Atributos
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
@@ -27,31 +27,26 @@ public class Producto {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate fechaEntrada;
 	private Double precio;
-	
-	@EqualsAndHashCode.Exclude
-	@ToString.Exclude
-	@ManyToOne
-	private LineaPresupuesto lineaPresupuesto;
 
-	
-	
-	public Producto(long id, String nombre, String descripcion, LocalDate fechaEntrada, Double precio,
-			LineaPresupuesto lineaPresupuesto) {
+	/**
+	 * @param id
+	 * @param nombre
+	 * @param descripcion
+	 * @param fechaEntrada
+	 * @param precio
+	 */
+	public Producto(long id, String nombre, String descripcion, LocalDate fechaEntrada, Double precio) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.fechaEntrada = fechaEntrada;
 		this.precio = precio;
-		this.lineaPresupuesto = lineaPresupuesto;
 	}
-
 
 	public Producto() {
-		
+
 	}
-
-
 
 	/**
 	 * @return the id
@@ -60,16 +55,12 @@ public class Producto {
 		return id;
 	}
 
-
-
 	/**
 	 * @param id the id to set
 	 */
 	public void setId(long id) {
 		this.id = id;
 	}
-
-
 
 	/**
 	 * @return the nombre
@@ -78,16 +69,12 @@ public class Producto {
 		return nombre;
 	}
 
-
-
 	/**
 	 * @param nombre the nombre to set
 	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
-
 
 	/**
 	 * @return the descripcion
@@ -96,16 +83,12 @@ public class Producto {
 		return descripcion;
 	}
 
-
-
 	/**
 	 * @param descripcion the descripcion to set
 	 */
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-
-
 
 	/**
 	 * @return the fechaEntrada
@@ -114,16 +97,12 @@ public class Producto {
 		return fechaEntrada;
 	}
 
-
-
 	/**
 	 * @param fechaEntrada the fechaEntrada to set
 	 */
 	public void setFechaEntrada(LocalDate fechaEntrada) {
 		this.fechaEntrada = fechaEntrada;
 	}
-
-
 
 	/**
 	 * @return the precio
@@ -132,42 +111,12 @@ public class Producto {
 		return precio;
 	}
 
-
-
 	/**
 	 * @param precio the precio to set
 	 */
 	public void setPrecio(Double precio) {
 		this.precio = precio;
 	}
-
-
-
-	/**
-	 * @return the lineaPresupuesto
-	 */
-	public LineaPresupuesto getLineaPresupuesto() {
-		return lineaPresupuesto;
-	}
-
-
-
-	/**
-	 * @param lineaPresupuesto the lineaPresupuesto to set
-	 */
-	public void setLineaPresupuesto(LineaPresupuesto lineaPresupuesto) {
-		this.lineaPresupuesto = lineaPresupuesto;
-	}
-
-
-
-	@Override
-	public String toString() {
-		return "Producto [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", fechaEntrada="
-				+ fechaEntrada + ", precio=" + precio + ", lineaPresupuesto=" + lineaPresupuesto + "]";
-	}
-
-
 
 	@Override
 	public int hashCode() {
@@ -176,13 +125,10 @@ public class Producto {
 		result = prime * result + ((descripcion == null) ? 0 : descripcion.hashCode());
 		result = prime * result + ((fechaEntrada == null) ? 0 : fechaEntrada.hashCode());
 		result = prime * result + (int) (id ^ (id >>> 32));
-		result = prime * result + ((lineaPresupuesto == null) ? 0 : lineaPresupuesto.hashCode());
 		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
 		result = prime * result + ((precio == null) ? 0 : precio.hashCode());
 		return result;
 	}
-
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -205,11 +151,6 @@ public class Producto {
 			return false;
 		if (id != other.id)
 			return false;
-		if (lineaPresupuesto == null) {
-			if (other.lineaPresupuesto != null)
-				return false;
-		} else if (!lineaPresupuesto.equals(other.lineaPresupuesto))
-			return false;
 		if (nombre == null) {
 			if (other.nombre != null)
 				return false;
@@ -223,7 +164,10 @@ public class Producto {
 		return true;
 	}
 
-	
-	
-	
+	@Override
+	public String toString() {
+		return "Producto [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", fechaEntrada="
+				+ fechaEntrada + ", precio=" + precio + "]";
+	}
+
 }

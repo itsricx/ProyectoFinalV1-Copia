@@ -1,10 +1,68 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link href="../../static/css/StyleCarrito.css" th:href="@{/css/StyleCarrito.css}" rel="stylesheet" type="text/css">
+<title>Carrito</title>
 </head>
 <body>
-
+<div class="w3-bar w3-blue-grey">
+  <a href="#" th:href="@{/cliente/accederPanelControlCliente}" class="w3-bar-item w3-button">Volver al panel principal</a>
+  <a href="#" th:href="@{/producto/buscarProductos}" class="w3-bar-item w3-button">Lista de productos</a>
+  <a href="#" th:href="@{/logout}" class="w3-bar-item w3-button">Cerrar sesion</a>
+  </div>
+  
+  <div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-10 col-md-offset-1">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th class="text-center">Precio</th>
+                        <th class="text-center">Subtotal</th>
+                        <th> </th>
+                    </tr>
+                </thead>
+                <tbody>
+                
+              
+                
+                    <tr th:each="producto : ${listado}">
+                        <td class="col-sm-6 col-md-4" th:text="${producto.productos.nombre}"></td>
+                        <td class="col-sm-1 col-md-1" style="text-align: center">
+                        <input class="form-control" id="inputQuantity" value="3" th:value="${producto.cantidad}" type="text" /></td>
+                        <td class="col-sm-2 col-md-3 text-center"><strong th:text="${producto.productos.precio}"></strong></td>
+                    
+                        
+                        <td class="col-sm-2 col-md-3 text-center">
+                        
+                        <strong th:text="${producto.productos.precio * producto.cantidad}"></strong>
+                        
+                        </td>
+                        
+                        <td class="col-sm-2 col-md-2">
+                        	<a  href="#" class="w3-bar-item w3-button" th:href="@{/presupuesto/borrarLineaPresupuesto/{id}(id=${producto.productos.id})}">Borrar</a>
+                        
+                        </td>
+                        
+                    </tr>                                       
+                    <tr>
+                        <td>   </td>
+                        <td>   </td>
+                        <td>   </td>
+                        <td><h3>Total</h3></td>
+                        <td class="text-right"><h3><strong th:text="${totalCarrito}+'€'"></strong></h3></td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+  
 </body>
 </html>

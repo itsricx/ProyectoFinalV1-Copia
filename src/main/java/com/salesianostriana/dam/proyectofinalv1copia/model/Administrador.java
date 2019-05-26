@@ -9,6 +9,16 @@ import javax.persistence.Entity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
+
+
+/**
+ * Esta clase define los metodos propios y los atributos de un administrador
+ * 
+ * @author Ricardo Mejias Dorado
+ * @version 1.0
+ * 
+ */
+@SuppressWarnings("serial")
 @Entity
 @DiscriminatorValue("A")
 public class Administrador extends Usuario {
@@ -18,7 +28,7 @@ public class Administrador extends Usuario {
 
 	
 
-	/**
+	/**Constructor completo
 	 * @param id
 	 * @param nombre
 	 * @param apellidos
@@ -33,6 +43,10 @@ public class Administrador extends Usuario {
 		DNI = dNI;
 	}
 
+	/**
+	 * Constructor vacio
+	 * 
+	 * */
 	public Administrador() {
 	}
 

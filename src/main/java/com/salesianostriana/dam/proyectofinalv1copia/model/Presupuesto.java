@@ -2,6 +2,7 @@ package com.salesianostriana.dam.proyectofinalv1copia.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,89 +13,57 @@ import javax.persistence.OneToMany;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
-
-
+/**
+ * Esta clase define los metodos propios y los atributos de un presupuesto
+ * @author Ricardo Mejias Dorado
+ * @version 1.0
+ * 
+ * */
 @Entity
 public class Presupuesto {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	private String nombrePresupuesto;
-	private Double total;
-	private Integer IVA;
 	
 	@EqualsAndHashCode.Exclude
 	@ToString.Exclude
-	@OneToMany(mappedBy = "presupuesto")
+	@OneToMany(cascade=CascadeType.ALL)
 	private List<LineaPresupuesto> lineasPresupuestos;
 	
 	@ManyToOne
 	private Cliente cliente;
 
-	/**
+	
+
+	/**Constructor completo
 	 * @param id
-	 * @param nombrePresupuesto
-	 * @param total
-	 * @param iVA
 	 * @param lineasPresupuestos
 	 * @param cliente
 	 */
-	public Presupuesto(long id, String nombrePresupuesto, Double total, Integer iVA,
-			List<LineaPresupuesto> lineasPresupuestos, Cliente cliente) {
+	public Presupuesto(long id, List<LineaPresupuesto> lineasPresupuestos, Cliente cliente) {
 		super();
 		this.id = id;
-		this.nombrePresupuesto = nombrePresupuesto;
-		this.total = total;
-		IVA = iVA;
 		this.lineasPresupuestos = lineasPresupuestos;
 		this.cliente = cliente;
 	}
-	
+
+	/**
+	 * Constructor vacio
+	 * @author Ricardo Mejias Dorado
+	 * @version 1.0
+	 * 
+	 * */
 	public Presupuesto() {
 		
 	}
 
+	
 	/**
 	 * @return the id
 	 */
 	public long getId() {
 		return id;
-	}
-
-	/**
-	 * @return the nombrePresupuesto
-	 */
-	public String getNombrePresupuesto() {
-		return nombrePresupuesto;
-	}
-
-	/**
-	 * @return the total
-	 */
-	public Double getTotal() {
-		return total;
-	}
-
-	/**
-	 * @return the iVA
-	 */
-	public Integer getIVA() {
-		return IVA;
-	}
-
-	/**
-	 * @return the lineasPresupuestos
-	 */
-	public List<LineaPresupuesto> getLineasPresupuestos() {
-		return lineasPresupuestos;
-	}
-
-	/**
-	 * @return the cliente
-	 */
-	public Cliente getCliente() {
-		return cliente;
 	}
 
 	/**
@@ -105,24 +74,10 @@ public class Presupuesto {
 	}
 
 	/**
-	 * @param nombrePresupuesto the nombrePresupuesto to set
+	 * @return the lineasPresupuestos
 	 */
-	public void setNombrePresupuesto(String nombrePresupuesto) {
-		this.nombrePresupuesto = nombrePresupuesto;
-	}
-
-	/**
-	 * @param total the total to set
-	 */
-	public void setTotal(Double total) {
-		this.total = total;
-	}
-
-	/**
-	 * @param iVA the iVA to set
-	 */
-	public void setIVA(Integer iVA) {
-		IVA = iVA;
+	public List<LineaPresupuesto> getLineasPresupuestos() {
+		return lineasPresupuestos;
 	}
 
 	/**
@@ -130,6 +85,13 @@ public class Presupuesto {
 	 */
 	public void setLineasPresupuestos(List<LineaPresupuesto> lineasPresupuestos) {
 		this.lineasPresupuestos = lineasPresupuestos;
+	}
+
+	/**
+	 * @return the cliente
+	 */
+	public Cliente getCliente() {
+		return cliente;
 	}
 
 	/**
@@ -141,20 +103,16 @@ public class Presupuesto {
 
 	@Override
 	public String toString() {
-		return "Presupuesto [id=" + id + ", nombrePresupuesto=" + nombrePresupuesto + ", total=" + total + ", IVA="
-				+ IVA + ", lineasPresupuestos=" + lineasPresupuestos + ", cliente=" + cliente + "]";
+		return "Presupuesto [id=" + id + ", lineasPresupuestos=" + lineasPresupuestos + ", cliente=" + cliente + "]";
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((IVA == null) ? 0 : IVA.hashCode());
 		result = prime * result + ((cliente == null) ? 0 : cliente.hashCode());
 		result = prime * result + (int) (id ^ (id >>> 32));
 		result = prime * result + ((lineasPresupuestos == null) ? 0 : lineasPresupuestos.hashCode());
-		result = prime * result + ((nombrePresupuesto == null) ? 0 : nombrePresupuesto.hashCode());
-		result = prime * result + ((total == null) ? 0 : total.hashCode());
 		return result;
 	}
 
@@ -167,11 +125,6 @@ public class Presupuesto {
 		if (getClass() != obj.getClass())
 			return false;
 		Presupuesto other = (Presupuesto) obj;
-		if (IVA == null) {
-			if (other.IVA != null)
-				return false;
-		} else if (!IVA.equals(other.IVA))
-			return false;
 		if (cliente == null) {
 			if (other.cliente != null)
 				return false;
@@ -184,28 +137,7 @@ public class Presupuesto {
 				return false;
 		} else if (!lineasPresupuestos.equals(other.lineasPresupuestos))
 			return false;
-		if (nombrePresupuesto == null) {
-			if (other.nombrePresupuesto != null)
-				return false;
-		} else if (!nombrePresupuesto.equals(other.nombrePresupuesto))
-			return false;
-		if (total == null) {
-			if (other.total != null)
-				return false;
-		} else if (!total.equals(other.total))
-			return false;
 		return true;
-	}
-	
-	public void addLineaPresupuesto(LineaPresupuesto lp) {
-		this.lineasPresupuestos.add(lp);
-		lp.setPresupuesto(this);
-		
-	}
-	
-	public void removeLineaPresupuesto(LineaPresupuesto lp) {
-		this.lineasPresupuestos.remove(lp);
-		lp.setPresupuesto(null);
 	}
 	
 	

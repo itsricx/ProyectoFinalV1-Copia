@@ -3,106 +3,122 @@
  */
 package com.salesianostriana.dam.proyectofinalv1copia.model;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-
 
 /**
- * @author Rick
- *
+ * Esta clase define los metodos propios y los atributos de una Linea de
+ * presupuesto
+ * 
+ * @author Ricardo Mejias Dorado
+ * @version 1.0
+ * 
  */
 @Entity
 public class LineaPresupuesto {
 
-	//Atributos
+	// Atributos
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	
-	@ManyToOne
-	private Presupuesto presupuesto;
-	
-	@OneToMany(mappedBy = "lineaPresupuesto")
-	private List<Producto> listadoProductos;
 
-	
-	
-	public LineaPresupuesto(long id, Presupuesto presupuesto, List<Producto> listadoProductos) {
+	private Integer cantidad;
+	@ManyToOne
+	private Producto productos;
+
+	/**
+	 * Constructor completo
+	 * 
+	 * @param id
+	 * @param cantidad
+	 * @param productos
+	 */
+	public LineaPresupuesto(long id, Integer cantidad, Producto productos) {
 		super();
 		this.id = id;
-		this.presupuesto = presupuesto;
-		this.listadoProductos = listadoProductos;
+		this.cantidad = cantidad;
+		this.productos = productos;
 	}
 
+	/**
+	 * Construcor sin id
+	 * 
+	 * @param cantidad
+	 * @param productos
+	 */
+	public LineaPresupuesto(Integer cantidad, Producto productos) {
+		super();
+		this.cantidad = cantidad;
+		this.productos = productos;
+	}
 
-
+	/**
+	 * Constructor vacio
+	 * 
+	 */
 	public LineaPresupuesto() {
-		
+
 	}
 
-
-
+	/**
+	 * @return the id
+	 */
 	public long getId() {
 		return id;
 	}
 
-
-
+	/**
+	 * @param id the id to set
+	 */
 	public void setId(long id) {
 		this.id = id;
 	}
 
-
-
-	public Presupuesto getPresupuesto() {
-		return presupuesto;
+	/**
+	 * @return the cantidad
+	 */
+	public Integer getCantidad() {
+		return cantidad;
 	}
 
-
-
-	public void setPresupuesto(Presupuesto presupuesto) {
-		this.presupuesto = presupuesto;
+	/**
+	 * @param cantidad the cantidad to set
+	 */
+	public void setCantidad(Integer cantidad) {
+		this.cantidad = cantidad;
 	}
 
-
-
-	public List<Producto> getListadoProductos() {
-		return listadoProductos;
+	/**
+	 * @return the productos
+	 */
+	public Producto getProductos() {
+		return productos;
 	}
 
-
-
-	public void setListadoProductos(List<Producto> listadoProductos) {
-		this.listadoProductos = listadoProductos;
+	/**
+	 * @param productos the productos to set
+	 */
+	public void setProductos(Producto productos) {
+		this.productos = productos;
 	}
-
-
 
 	@Override
 	public String toString() {
-		return "LineaPresupuesto [id=" + id + ", presupuesto=" + presupuesto + ", listadoProductos=" + listadoProductos
-				+ "]";
+		return "LineaPresupuesto [id=" + id + ", cantidad=" + cantidad + ", productos=" + productos + "]";
 	}
-
-
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((cantidad == null) ? 0 : cantidad.hashCode());
 		result = prime * result + (int) (id ^ (id >>> 32));
-		result = prime * result + ((listadoProductos == null) ? 0 : listadoProductos.hashCode());
-		result = prime * result + ((presupuesto == null) ? 0 : presupuesto.hashCode());
+		result = prime * result + ((productos == null) ? 0 : productos.hashCode());
 		return result;
 	}
-
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -113,38 +129,19 @@ public class LineaPresupuesto {
 		if (getClass() != obj.getClass())
 			return false;
 		LineaPresupuesto other = (LineaPresupuesto) obj;
+		if (cantidad == null) {
+			if (other.cantidad != null)
+				return false;
+		} else if (!cantidad.equals(other.cantidad))
+			return false;
 		if (id != other.id)
 			return false;
-		if (listadoProductos == null) {
-			if (other.listadoProductos != null)
+		if (productos == null) {
+			if (other.productos != null)
 				return false;
-		} else if (!listadoProductos.equals(other.listadoProductos))
-			return false;
-		if (presupuesto == null) {
-			if (other.presupuesto != null)
-				return false;
-		} else if (!presupuesto.equals(other.presupuesto))
+		} else if (!productos.equals(other.productos))
 			return false;
 		return true;
 	}
 
-	public void addProducto(Producto p) {
-		this.listadoProductos.add(p);
-		p.setLineaPresupuesto(this);
-		
-	}
-	
-	public void removeProducto(Producto p) {
-		this.listadoProductos.remove(p);
-		p.setLineaPresupuesto(null);
-	
-	
-	}
-	
-	
-	
-	
-	
-	
-	
 }

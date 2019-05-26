@@ -1,13 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style type="text/css">body{
+    background: url("../jpg/background.jpg") no-repeat;
+	background-size: cover;
+    min-height: 100%;
+</style>
+
+<title>Panel de Control del Cliente</title>
 </head>
 <body>
-
-<div>
-
-</div>
+<h2 style = "color:white">Panel de control de Cliente </h2>
+  <p style="color:White">Bienvenido a su tienda, Cliente</p>
+<div class="w3-bar w3-blue-grey">
+  <a href="#" th:href="@{/producto/buscarProductos}" class="w3-bar-item w3-button">Realizar presupuesto(previa busqueda)</a>
+  <a href="#" th:href="@{/producto/buscarProductosBaratos}" class="w3-bar-item w3-button">Ofertas</a>
+  <a href="#" th:href="@{/cliente/Contacto}" class="w3-bar-item w3-button">Contacto</a>
+  <a href="#" th:href="@{/logout}" class="w3-bar-item w3-button">Cerrar sesion</a>
+  </div>
 </body>
 </html>
