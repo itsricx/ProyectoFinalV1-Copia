@@ -6,12 +6,19 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="src/main/resources/static/css/styles.css" th:href="@{/css/styles.css}">
+   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <title>Formulario de Registro de Administrador</title>
 </head>
 
 <body>
+<div class="w3-bar w3-blue-grey">
+<a href="#" th:href="@{/admin/accederPanelControlAdmin}" class="w3-bar-item w3-button">Volver al panel de administracion</a>
+  <a href="#" th:href="@{/logout}" class="w3-bar-item w3-button">Cerrar sesion</a>
+  </div>
+
+
     <div class="container" id="advanced-search-form">
-        <h2>Formulario de Registro de Cliente</h2>
+        <h2>Formulario de Registro de Administrador</h2>
         <form method="POST" th:action="${administrador.id !=0} ? @{/admin/editarAdmin/submit} : @{/admin/nuevo/administrador/submit}" th:object="${administrador}">
             <input th:if = "${administrador.id !=0}" type = "hidden" name = "id" th:field ="*{id}"/>
              <div class="form-group">

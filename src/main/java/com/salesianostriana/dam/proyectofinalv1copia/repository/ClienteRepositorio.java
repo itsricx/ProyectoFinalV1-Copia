@@ -22,15 +22,15 @@ public interface ClienteRepositorio extends JpaRepository<Cliente, Long> {
 
 	/**
 	 * Se encarga de buscar  a los clientes por su nombre
-	 * @param nombre
+	 * @param nombre el nombre
 	 * return Una lista de clientes
 	 * */
 	public  List<Cliente> findByNombreContainingIgnoreCase(String nombre);
 	
 	/**
 	 * Se encarga de buscar  a los clientes por su nombre, paginados
-	 * @param nombre
-	 * @param pageable
+	 * @param nombre el nombre
+	 * @param pageable pageable
 	 * return Un paginado de clientes
 	 * */
 	public  Page<Cliente> findByNombreContainingIgnoreCase(String nombre, Pageable pageable);

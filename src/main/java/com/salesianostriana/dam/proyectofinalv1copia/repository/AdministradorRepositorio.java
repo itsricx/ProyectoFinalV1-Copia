@@ -22,15 +22,15 @@ public interface AdministradorRepositorio extends JpaRepository<Administrador, L
 
 	/**
 	 * Se encarga de buscar  a los administradores por su nombre
-	 * @param nombre
+	 * @param nombre el nombre
 	 * return Una lista de administradores
 	 * */
 public  List<Administrador> findByNombreContainingIgnoreCase(String nombre);
 	
 /**
  * Se encarga de buscar  a los administradores por su nombre, paginados
- * @param nombre
- * @param pageable
+ * @param nombre el nombre
+ * @param pageable pageable
  * return Un paginado de administradores
  * */
 	public  Page<Administrador> findByNombreContainingIgnoreCase(String nombre, Pageable pageable);

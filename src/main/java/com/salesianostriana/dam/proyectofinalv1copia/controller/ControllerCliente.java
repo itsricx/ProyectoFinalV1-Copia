@@ -32,7 +32,7 @@ public class ControllerCliente {
 	private ClienteServicio clienteServicio;
 
 	/**Constructor del controller cliente
-	 * @param clienteServicio
+	 * @param clienteServicio Instancia de cliente servicio
 	 */
 	public ControllerCliente(ClienteServicio clienteServicio) {
 		super();
@@ -42,7 +42,8 @@ public class ControllerCliente {
 	/**
 	 * Metodo que muestra el formulario de registro para un cliente
 	 * 
-	 * @param model return El formulario de registro
+	 * @param model Modelo
+	 * @return el registro de cliente
 	 */
 	// METODO RELLENAR FORMULARIO DE REGISTRO
 	@GetMapping("nuevoCliente")
@@ -56,7 +57,8 @@ public class ControllerCliente {
 	/**
 	 * Metodo que muestra el formulario de registro de un cliente para un admin
 	 * 
-	 * @param model return El formulario de registro
+	 * @param model Modelo 
+	 * @return el registro de admin
 	 */
 	// METODO RELLENAR FORMULARIO DE REGISTRO DE UN CLIENTE POR PARTE DE UN ADMIN
 	@GetMapping("admin/nuevoCliente")
@@ -70,7 +72,8 @@ public class ControllerCliente {
 	/**
 	 * Metodo que procesa la informacion del formulario de registro para un cliente
 	 * 
-	 * @param C return login
+	 * @param C Instancia de cliente
+	 * @return el login
 	 */
 	// METODO ENVIAR RESPUESTA FORMULARIO DE REGISTRO
 	@PostMapping("nuevoCliente/submit")
@@ -87,7 +90,7 @@ public class ControllerCliente {
 	 * Metodo que procesa la informacion del formulario de registro de un cliente
 	 * para un admin
 	 * 
-	 * @param C return El listado de clientes paginado
+	 * @param C Instancia de cliente @return El listado de clientes paginado
 	 */
 	// METODO ENVIAR RESPUESTA FORMULARIO DE REGISTRO DE CLIENTE(ADMIN)
 	@PostMapping("admin/nuevoCliente/submit")
@@ -101,10 +104,10 @@ public class ControllerCliente {
 	/**
 	 * Metodo que muestra el listado de clientes paginado al administrador
 	 * 
-	 * @param model
-	 * @param pageSize
-	 * @param page
-	 * @param nombre   return El listado de clientes paginado
+	 * @param model	Modelo
+	 * @param pageSize	Tamanyo del Page
+	 * @param page Page
+	 * @param nombre Nombre  @return El listado de clientes paginado
 	 */
 	// METODO LISTAR TODOS LOS CLIENTES ADMIN
 	@GetMapping("/admin/verListadoClientes")
@@ -145,8 +148,8 @@ public class ControllerCliente {
 	 * Metodo que muestra el formulario para editar un cliente, esto lo hace un
 	 * admin
 	 * 
-	 * @param id
-	 * @param model return El formulario de registro de un cliente
+	 * @param id id del cliente
+	 * @param model Modelo @return El formulario de registro de un cliente
 	 */
 	// METODO EDITAR PERFIL
 	@GetMapping("editarPerfil/{id}")
@@ -166,7 +169,7 @@ public class ControllerCliente {
 	/**
 	 * Metodo que procesa el formulario para editar un cliente
 	 * 
-	 * @param C return El listado de clientes paginado
+	 * @param C Instancia de cliente @return El listado de clientes paginado
 	 */
 	// METODO EDITAR PERFIL(PROCESAR)
 	@PostMapping("editarPerfil/submit")
@@ -179,7 +182,8 @@ public class ControllerCliente {
 	/**
 	 * Metodo que borra un cliente, esto lo hace un admin
 	 * 
-	 * @param id return El listado de clientes paginado
+	 * @param id Id del cliente 
+	 * @return el listado
 	 */
 	// METODO BORRAR UN CLIENTE ADMIN
 	@GetMapping("admin/borrar/cliente/{id}")
@@ -191,13 +195,16 @@ public class ControllerCliente {
 	/**
 	 * Metodo que redirecciona al panel de control
 	 * 
-	 * return El panel de control del cliente
+	 * @return El panel de control del cliente
 	 */
 	@GetMapping("accederPanelControlCliente")
 	public String accederPanelCliente() {
 		return "html/PanelControlCliente";
 	}
-	
+	/**
+	 * El contacto de la empresa
+	 * @return contacto
+	 * */
 	@GetMapping("Contacto")
 	public String accederContacto() {
 		return "html/Contacto";

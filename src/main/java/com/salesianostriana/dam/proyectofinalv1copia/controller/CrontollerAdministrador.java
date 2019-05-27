@@ -38,7 +38,7 @@ public class CrontollerAdministrador {
 	public AdministradorServicio administradorServicio;
 
 	/**Constructor del controller administrador
-	 * @param administradorServicio
+	 * @param administradorServicio Instancia de administrador servicio
 	 */
 	public CrontollerAdministrador(AdministradorServicio administradorServicio) {
 		super();
@@ -48,7 +48,7 @@ public class CrontollerAdministrador {
 	/**
 	 * Metodo que muestra el formulario de registro de un administrador
 	 * 
-	 * @param model return El formulario de registro
+	 * @param model Modelo return El formulario de registro
 	 */
 	// METODO MOSTRAR FORMULARIO REGISTRO_DE_ADMINISTRADOR
 	@GetMapping("nuevo/administrador")
@@ -76,7 +76,7 @@ public class CrontollerAdministrador {
 	/**
 	 * Metodo que borra un admin
 	 * 
-	 * @param id return El listado de admin paginado
+	 * @param id Id del admin return El listado de admin paginado
 	 */
 	//ESTO ENVIARA AL LISTADO DE ADMINISTRADORES
 	// METODO BORRAR UN ADMIN
@@ -89,8 +89,8 @@ public class CrontollerAdministrador {
 	
 	/**
 	 * Metodo que muestra el formulario para editar un admin
-	 * @param id
-	 * @param model return El formulario de registro de un admin
+	 * @param id Id del admin
+	 * @param model Modelo return El formulario de registro de un admin
 	 */
 	// METODO EDITAR UN ADMINISTRADOR
 	@GetMapping("editarAdmin/{id}")
@@ -110,7 +110,7 @@ public class CrontollerAdministrador {
 	/**
 	 * Metodo que procesa el formulario para editar un admin
 	 * 
-	 * @param A return El listado de admin paginado
+	 * @param A Administrador return El listado de admin paginado
 	 */
 	//ESTO ENVIARA AL LISTADO DE ADMIN
 	//METODO EDITAR UN ADMINISTRADOR(PROCESAR)
@@ -125,10 +125,10 @@ public class CrontollerAdministrador {
 	/**
 	 * Metodo que muestra el listado de admins paginado
 	 * 
-	 * @param model
-	 * @param pageSize
-	 * @param page
-	 * @param nombre   return El listado de admins paginado
+	 * @param model Modelo
+	 * @param pageSize Tamanyo pagina
+	 * @param page Page
+	 * @param nombre   Nombre return El listado de admins paginado
 	 */
 	 @GetMapping("verListadoAdmin")
 	 public String showAdmin(@RequestParam("pageSize") Optional<Integer> pageSize,

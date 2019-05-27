@@ -8,19 +8,56 @@ import java.util.List;
 
 import org.junit.Test;
 
+import com.salesianostriana.dam.proyectofinalv1copia.model.LineaPresupuesto;
 import com.salesianostriana.dam.proyectofinalv1copia.model.Producto;
+import com.salesianostriana.dam.proyectofinalv1copia.services.PresupuestoServicio;
 
 public class PresupuestoServicioTests {
 
+	PresupuestoServicio ps;
 	
 	//Se calcula de esta forma para no modificar el metodo, preguntar a Luis Miguel
 	@Test
 	public void testCalcularTotal() {
-		List<Producto> listado = new ArrayList<Producto>();
-		listado.add(new Producto(1,"Rosas","Prueba",LocalDate.of(1999, 07, 22),20.0));
-		listado.add(new Producto(2,"Margaritas","Prueba",LocalDate.of(1997, 07, 22),20.0));
+		List<LineaPresupuesto> aux = new ArrayList<LineaPresupuesto>();
+		ps = new PresupuestoServicio(aux);
+		LineaPresupuesto l = new LineaPresupuesto(1,new Producto(0,"Prueba","Prueba",LocalDate.of(1999, 06, 23),10.0));
+		LineaPresupuesto l2 = new LineaPresupuesto(1,new Producto(1,"Prueba2","Prueba2",LocalDate.of(1998, 06, 23),10.0));
+
 		
-		assertEquals(40.0, listado.get(0).getPrecio()+listado.get(1).getPrecio(), 0.001);
+		aux.add(l);
+		aux.add(l2);
+		ps.setLineasPresupuestos(aux);
+		assertEquals(20.0, ps.calcularTotal(), 0.001);
 	}
 
+	@Test
+	public void testBorrarproducto() {
+		List<LineaPresupuesto> aux = new ArrayList<LineaPresupuesto>();
+		ps = new PresupuestoServicio(aux);
+		LineaPresupuesto l = new LineaPresupuesto(1,new Producto(0,"Prueba","Prueba",LocalDate.of(1999, 06, 23),10.0));
+		LineaPresupuesto l2 = new LineaPresupuesto(1,new Producto(1,"Prueba2","Prueba2",LocalDate.of(1998, 06, 23),10.0));
+		aux.add(l);
+		aux.add(l2);
+		ps.setLineasPresupuestos(aux);
+		
+		ps.borrarProducto(l.getProductos());
+		ps.borrarProducto(l2.getProductos());
+		
+		assertTrue(ps.getLineasPresupuestos().isEmpty());
+	}
+	
+	@Test
+	public void testAgregarProducto() {
+		List<LineaPresupuesto> aux = new ArrayList<LineaPresupuesto>();
+		ps = new PresupuestoServicio(aux);
+		LineaPresupuesto l = new LineaPresupuesto(1,new Producto(0,"Prueba","Prueba",LocalDate.of(1999, 06, 23),10.0));
+		LineaPresupuesto l2 = new LineaPresupuesto(1,new Producto(1,"Prueba2","Prueba2",LocalDate.of(1998, 06, 23),10.0));
+		aux.add(l);
+		aux.add(l2);
+		ps.setLineasPresupuestos(aux);
+		
+		
+		assertFalse(ps.getLineasPresupuestos().isEmpty());
+	}
 }

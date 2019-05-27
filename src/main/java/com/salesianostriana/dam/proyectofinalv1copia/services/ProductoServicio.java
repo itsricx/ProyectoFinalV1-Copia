@@ -3,6 +3,10 @@ package com.salesianostriana.dam.proyectofinalv1copia.services;
 
 
 
+
+
+
+
 import javax.persistence.EntityManager;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,8 +37,11 @@ public class ProductoServicio extends BaseService<Producto, Long, ProductoReposi
     public  ProductoServicio(ProductoRepositorio productoRepositorio) {
     	this.productoRepositorio = productoRepositorio;
     }
-	
-    /**
+    
+ 
+
+
+	/**
 	 * Encuentra a todos los Productos paginados
 	 * @param pageable
 	 * */

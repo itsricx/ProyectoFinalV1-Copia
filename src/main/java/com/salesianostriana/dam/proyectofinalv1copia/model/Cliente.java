@@ -37,14 +37,14 @@ public class Cliente extends Usuario{
 	private List<Presupuesto> listaPresupuestos;
 
 	/**Constructor completo
-	 * @param id
-	 * @param nombre
-	 * @param apellidos
-	 * @param email
-	 * @param telefono
-	 * @param password
-	 * @param edad
-	 * @param listaPresupuestos
+	 * @param id el id
+	 * @param nombre el nombre
+	 * @param apellidos los apellidos
+	 * @param email el email
+	 * @param telefono el telefono
+	 * @param password la password
+	 * @param edad la edad
+	 * @param listaPresupuestos listado de presupuestos
 	 */
 	public Cliente(long id, String nombre, String apellidos, String email, String telefono, String password,
 			Integer edad, List<Presupuesto> listaPresupuestos) {

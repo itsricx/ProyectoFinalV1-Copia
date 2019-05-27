@@ -22,15 +22,15 @@ public interface ProductoRepositorio extends JpaRepository<Producto, Long>{
 
 	/**
 	 * Se encarga de buscar  a los productos por su nombre
-	 * @param nombre
+	 * @param nombre el nombre
 	 * return Una lista de productos
 	 * */
 	public  List<Producto> findByNombreContainingIgnoreCase(String nombre);
 	
 	/**
 	 * Se encarga de buscar  a los productos por su nombre, paginados
-	 * @param nombre
-	 * @param pageable
+	 * @param nombre el nombre
+	 * @param pageable pageable
 	 * return Un paginado de productos
 	 * */
 	public  Page<Producto> findByNombreContainingIgnoreCase(String nombre, Pageable pageable);

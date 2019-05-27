@@ -44,7 +44,7 @@ public class ControllerProducto {
 	
 
 	/**Constructor de Controller Producto
-	 * @param productoServicio
+	 * @param productoServicio Instancia de producto Servicio
 	 */
 	public ControllerProducto(ProductoServicio productoServicio) {
 		super();
@@ -54,10 +54,10 @@ public class ControllerProducto {
 	/**
 	 * Metodo que muestra el listado de productos paginado al admin
 	 * 
-	 * @param model
-	 * @param pageSize
-	 * @param page
-	 * @param nombre   return El listado de productos paginado
+	 * @param model Modelo
+	 * @param pageSize tamanyo de pagina
+	 * @param page page
+	 * @param nombre   Nombre return El listado de productos paginado
 	 */
 	//METODO LISTAR TODOS LOS PRODUCTOS ADMIN
 	@GetMapping("verListadoProductos")
@@ -94,10 +94,10 @@ public class ControllerProducto {
 	/**
 	 * Metodo que muestra el listado de productos paginado al cliente
 	 * 
-	 * @param model
-	 * @param pageSize
-	 * @param page
-	 * @param nombre   return El listado de productos paginado
+	 * @param model Modelo
+	 * @param pageSize tamanyo de Pagina
+	 * @param page Pagina
+	 * @param nombre   Nombre return El listado de productos paginado
 	 */
 			//METODO LISTAR TODOS LOS PRODUCTOS CLIENTE
 	@GetMapping("buscarProductos")
@@ -131,7 +131,7 @@ public class ControllerProducto {
 	/**
 	 * Metodo que muestra el formulario de registro de un  producto para un admin
 	 * 
-	 * @param model 
+	 * @param model Modelo
 	 * return El formulario de registro de un producto
 	 */
 			// METODO MOSTRAR FORMULARIO REGISTRO_DE_PRODUCTO ADMIN
@@ -144,7 +144,7 @@ public class ControllerProducto {
 			/**
 			 * Metodo que procesa la informacion del formulario de registro para un cliente
 			 * 
-			 * @param p 
+			 * @param p producto
 			 * return login
 			 */
 			// METODO RESPUESTA FORMULARIO REGISTRO_DE_PRODUCTO ADMIN
@@ -157,7 +157,7 @@ public class ControllerProducto {
 			/**
 			 * Metodo que borra un producto, esto lo hace un admin
 			 * 
-			 * @param id return El listado de productos paginado
+			 * @param id Id del producto return El listado de productos paginado
 			 */
 			// METODO BORRAR UN PRODUCTO ADMIN
 			@GetMapping("/borrar/producto/{id}")
@@ -189,7 +189,7 @@ public class ControllerProducto {
 			/**
 			 * Metodo que procesa el formulario para editar un producto
 			 * 
-			 * @param p return El listado de productos paginado
+			 * @param p  Producto return El listado de productos paginado
 			 */
 			// METODO EDITAR UN PRODUCTO(RESPUESTA) ADMIN
 			@PostMapping("editarProducto/submit")
@@ -200,7 +200,14 @@ public class ControllerProducto {
 				return "redirect:/producto/verListadoProductos";
 				
 			}
-		
+			/**
+			 * Metodo que muestra el listado de productos paginado al cliente
+			 * 
+			 * @param model Modelo
+			 * @param pageSize tamanyo de Pagina
+			 * @param page Pagina
+			 * @param nombre   Nombre return El listado de productos paginado
+			 */
 			@GetMapping("buscarProductosBaratos")
 			public String showProductsPageCheap(@RequestParam("pageSize") Optional<Integer> pageSize,
 		            @RequestParam("page") Optional<Integer> page, @RequestParam("nombre") Optional<String> nombre, Model model) {

@@ -6,10 +6,16 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="src/main/resources/static/css/styles.css" th:href="@{/css/styles.css}">
+   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <title>Formulario de Registro de Producto</title>
 </head>
 
 <body>
+<div class="w3-bar w3-blue-grey">
+<a href="#" th:href="@{/admin/accederPanelControlAdmin}" class="w3-bar-item w3-button">Volver al panel de administracion</a>
+  <a href="#" th:href="@{/logout}" class="w3-bar-item w3-button">Cerrar sesion</a>
+  </div>
+
     <div class="container" id="advanced-search-form">
         <h2>Formulario de Registro de Producto</h2>
         <form method="POST" th:action=" ${producto.id != 0} ? @{/producto/editarProducto/submit} : @{/producto/nuevo/producto/submit}" th:object="${producto}">

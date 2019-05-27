@@ -45,12 +45,12 @@ public abstract class Usuario implements UserDetails {
 	
 	
 	/**
-	 * @param id
-	 * @param nombre
-	 * @param apellidos
-	 * @param email
-	 * @param telefono
-	 * @param password
+	 * @param id el id
+	 * @param nombre el nombre
+	 * @param apellidos los apellidos
+	 * @param email el email
+	 * @param telefono el telefono
+	 * @param password la password
 	 */
 	public Usuario(long id, String nombre, String apellidos, String email, String telefono, String password) {
 		super();

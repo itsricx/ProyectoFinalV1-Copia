@@ -32,9 +32,9 @@ public class LineaPresupuesto {
 	/**
 	 * Constructor completo
 	 * 
-	 * @param id
-	 * @param cantidad
-	 * @param productos
+	 * @param id el id
+	 * @param cantidad la cantidad
+	 * @param productos los productos
 	 */
 	public LineaPresupuesto(long id, Integer cantidad, Producto productos) {
 		super();
@@ -46,8 +46,8 @@ public class LineaPresupuesto {
 	/**
 	 * Construcor sin id
 	 * 
-	 * @param cantidad
-	 * @param productos
+	 * @param cantidad la cantidad
+	 * @param productos los productos
 	 */
 	public LineaPresupuesto(Integer cantidad, Producto productos) {
 		super();

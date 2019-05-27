@@ -29,11 +29,11 @@ public class Producto {
 	private Double precio;
 
 	/**
-	 * @param id
-	 * @param nombre
-	 * @param descripcion
-	 * @param fechaEntrada
-	 * @param precio
+	 * @param id el id
+	 * @param nombre el nombre
+	 * @param descripcion la descripcion
+	 * @param fechaEntrada la fecha de entrada
+	 * @param precio el precio
 	 */
 	public Producto(long id, String nombre, String descripcion, LocalDate fechaEntrada, Double precio) {
 		super();

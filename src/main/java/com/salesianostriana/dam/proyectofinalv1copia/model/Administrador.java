@@ -29,13 +29,13 @@ public class Administrador extends Usuario {
 	
 
 	/**Constructor completo
-	 * @param id
-	 * @param nombre
-	 * @param apellidos
-	 * @param email
-	 * @param telefono
-	 * @param password
-	 * @param dNI
+	 * @param id el id
+	 * @param nombre el nombre
+	 * @param apellidos los apellidos
+	 * @param email el email
+	 * @param telefono el telefono
+	 * @param password la password
+	 * @param dNI el dni
 	 */
 	public Administrador(long id, String nombre, String apellidos, String email, String telefono, String password,
 			String dNI) {

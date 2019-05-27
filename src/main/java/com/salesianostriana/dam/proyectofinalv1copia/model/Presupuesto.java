@@ -37,9 +37,9 @@ public class Presupuesto {
 	
 
 	/**Constructor completo
-	 * @param id
-	 * @param lineasPresupuestos
-	 * @param cliente
+	 * @param id el id
+	 * @param lineasPresupuestos lineas de presupuestp
+	 * @param cliente el cliente
 	 */
 	public Presupuesto(long id, List<LineaPresupuesto> lineasPresupuestos, Cliente cliente) {
 		super();

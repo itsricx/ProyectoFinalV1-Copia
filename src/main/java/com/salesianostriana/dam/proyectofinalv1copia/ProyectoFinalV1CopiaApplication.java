@@ -30,8 +30,9 @@ public class ProyectoFinalV1CopiaApplication {
 	}
 /**
  * Metodo que encripta las contraseñas a los usuarios añadidos desde el data.sql
- *@param usuarioServicio
- *@param passwordEncoder 
+ *@param usuarioServicio Instancia de Servicio usuario
+ *@param passwordEncoder Instancia de password encoder
+ *@return Inicio del programa
  * */
 	@Bean
 	public CommandLineRunner init(UsuarioServicio usuarioServicio, BCryptPasswordEncoder passwordEncoder) {

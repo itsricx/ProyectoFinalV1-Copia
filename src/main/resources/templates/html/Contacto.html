@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-<title>CSS Template</title>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<title>Contacto</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
@@ -70,7 +71,10 @@ footer {
 </style>
 </head>
 <body>
-
+<div class="w3-bar w3-blue-grey">
+  <a href="#" th:href="@{/cliente/accederPanelControlCliente}" class="w3-bar-item w3-button">Volver al panel principal</a>
+  <a href="#" th:href="@{/logout}" class="w3-bar-item w3-button">Cerrar sesion</a>
+  </div>
 <h2>Acerca de nosotros</h2>
 <p>En Florísteria María González Iglesias queremos que tanto en las buenas como en las malas, tengas personas de confianza.</p>
 <p>Llevamos mas de 40 años de experiencia en nuestro sector, acompañandote en buenos y malos momentos</p>

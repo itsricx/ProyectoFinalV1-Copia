@@ -12,7 +12,7 @@ public interface UsuarioRepositorio extends JpaRepository<Usuario, Long> {
 
 	/**
 	 * Encuentra a los usuarios por su email
-	 * @param email
+	 * @param email el email
 	 * return El usuario encontrado
 	 */
 	Usuario findFirstByEmail(String email);
